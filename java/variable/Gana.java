@@ -1,9 +1,7 @@
 package variable;
 
-public class First {
+public class Gana {
     public static void main(String[] args) {
-        System.out.print("asdfg");
-
+        System.out.print("he");
     }
-
 }
