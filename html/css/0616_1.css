@@ -1,0 +1,139 @@
+*{
+    margin:0;
+    padding:0;
+}
+html,body{
+    width:100%;
+}
+img{
+    width:100%;
+    height: 100%;
+
+}
+.header{
+    display:flex;
+    width:1024px;
+    margin: 0 auto;
+    height:100px;
+    position: relative;
+    border: solid black 1px;
+}
+#title{
+    height:100%;
+    width:auto;
+    position: absolute;
+    top:25px; left:10px;
+    overflow: hidden;
+    font-size:2.0em;
+}
+#nevi{
+    top:40px; right:10px; bottom:40px;
+    position:absolute;
+    margin-left:340px;
+    width:440px;
+    height:41px;
+    background:red;
+
+}
+
+#nevi ul{
+    list-style: none;
+    margin:0;
+    padding: 0;
+}
+#nevi ul,li{
+    text-align: center;
+}
+#nevi li{
+    float:left;
+}
+#nevi a:link, a:visited{
+    display: block;
+    width:100px;
+    text-decoration: none;
+    padding: 10px 5px;
+    color:white;
+}
+#nevi a:hover,a:active{
+    background: green;
+}
+.cloth_type{
+    background:lightcoral;
+    position: absolute;
+    display: none;
+}
+.cloth_type a{
+    display:block;
+}
+ #nevi:hover .cloth_type{
+    display:block;
+}
+
+ .main{
+     display: flex;
+     flex-direction: column;
+     width:1024px;
+     height:auto;
+     margin:0 auto;
+ }
+ .img1{
+     width:100%;
+     height:400px;
+
+ }
+ .library{
+     display: flex;
+     heigth:300px;
+     width:auto;
+     border-style: solid;
+     border-left-color: gray;
+     border-width:0 0 0 1px;
+
+ }
+ #library_header {
+     display: flex;
+     flex-direction: column;
+     margin: 0;
+     padding: 0;
+ }
+#li_title{
+    position: relative;
+    border-style:solid;
+    border-width:0 0 1px 0;
+    border-bottom-color:gray;
+    display: flex;
+    height:35px;
+
+}
+#li_body{
+    height:265px;
+
+}
+
+.li_section1{
+    width:400px;
+    height:300px;
+
+}
+.li_section_img{
+    width:400px;
+    height:300px;
+
+}
+.li_menu{
+    display: flex;
+    background:lightskyblue;
+    border-radius: 0 10px 0 0;
+    width:90px;
+    align-items: center;
+    justify-content: center;
+    margin:0 20px 0 0;
+}
+
+.footer{
+    border:solid black 1px;
+    height:117px;
+    width:1024px;
+    margin:auto;
+
+}

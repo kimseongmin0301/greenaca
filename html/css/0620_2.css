@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.calender {
+    width: 360px;
+    margin: 0 auto;
+    font-family:"NotoSansR"
+}
+
+.calender .header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 78px;
+}
+
+.calender .header .year-month{
+    width: 300px;
+    text-align: center;
+    line-height:1;
+}
+
+.calender .header .prev,
+.calender .header .next{
+    width:50px;
+    height:78px;
+    font-size:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.calender .header .prev::before,
+.calender .header .next::before{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    border:solid #000;
+    border-width: 3px 3px 0 0;
+    transition: border 0.1s;
+}
+
+.calender .header .prev:hover::before,
+.calender .header .next:hover::before{
+    border-color:#ed2a61;
+}
+
+.calender .header .prev::before{
+    transform:rotate(-135deg);
+}
+
+.calender .header .next::before{
+    transform:rotate(45deg);
+}
+
+.calender .cal{
+    padding-top:40px;
+    position:relative;
+    margin:0 auto;
+}
+
+.calender .cal .days {
+    display:flex;
+    margin-bottom:20px;
+    padding-bottom:20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.calender .cal::after{
+    top:368px;
+}
+
+.calender .cal .day{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:calc(100% / 7);
+    color:#999;
+    font-size :12px;
+    text-align:center;
+    border-radius:5px;
+}
+
+.today {background: rgb(242 242 242);}
+
+.calender .cal .date{
+    display:flex;
+    flex-flow:wrap;
+    height:290px;
+}
+
+.calender .cal .day:nth-child(7n){
+    color:#3c6ffa;
+}
+.calender .cal .day:nth-child(7n+1){
+    color:#ed2a61;
+}
+.calender .cal .day.disable{
+    color:#ddd;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+
+    <label>갯수</label>
+    <input type="text" id="num" readonly >
+    <button id="plus" class="exsum">+</button>
+    <button id="minus" class="exsum">-</button><br>
+<br>
+    취미
+    <ul>
+        <li>야구<input type="checkbox" id="check1" name='play' value="야구"></li>
+        <li>농구<input type="checkbox" id="check2" name='play' value="농구"></li>
+        <li>게임<input type="checkbox" id="check3" name='play' value="게임"></li>
+    </ul>
+    <button id="list_result">결과보기</button><br>
+    결과값:<h1 id="answer"></h1>
+
+    <br>
+
+    <label>글자수세기</label><br>
+    <textarea rows="16" cols="16" id="area"></textarea><br>
+    <label>글자수:</label>
+    <span id="area_result"></span>
+
+    <h1>1. +연산</h1>
+    <input type="text" id="one"> + <input type="text"  id="two"> = <input type="text"  id="three"   readonly> <input type="button" value="연산" id="ssum">
+
+    <h1>2. 총합 구하기</h1>
+    가격<input type="text" id="f_num">X 수량 
+    <select id="opt">
+        <option id="op1" value="1">1</option>
+        <option id="op2" value="2">2</option>
+        <option id="op3" value="3">3</option>
+        <option id="op4" value="4">4</option>
+        <option id="op5" value="5">5</option>
+    </select>
+    총합 <span id="mul"></span>
+
+    <h1>3. 총합구하기2</h1>
+    
+    바나나(1000원) <input type="checkbox" name="fruit" value="1000"><br>
+    사과(500원) <input type="checkbox" name="fruit" value="500"><br>
+    배(1500원) <input type="checkbox" name="fruit" value="1500"><br>
+    <input type="button" id="btn_f" value="총합"><br>
+    선택한 총가격: <span id="fruit_sum"></span>
+<br><br>
+
+<form name="fr" onsubmit="return check()">
+    <label>아이디</label>
+    <input type="text" name="id" id="idchk"><span id="idc"></span><br>
+    <label>비밀번호</label>
+    <input type="text" name="pw" id="pwchk"><span id="pwc"></span><br>
+    <input type="submit" value="로그인" >
+</form>
+
+
+    <script text="text/javascript" src="../js/S0628Ex.js"></script>
+</body>
+</html>

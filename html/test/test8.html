@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <div id="btn">
+        <button id="b1">Button1</button>
+        <button id="b2">Button2</button>
+        <button id="b3">Button3</button>
+        <button id="b4">Button4</button>
+    </div>
+   
+    <script>
+        const $btn = $('#btn button');
+      
+    //    console.log($btn);
+      
+         $btn.on('click', function (e) {
+      
+             console.log("this : ", this); // 클릭한 버튼을 가리킴. 버튼마다 onclick한 꼴임
+             console.log("$(this) : ", $(this)); // 버튼2 가리킴. 단, 제이쿼리 용
+             console.log("e.target : ", e.target); // 클릭한 버튼 가리킴. 버튼마다 onclick한 꼴임
+             console.log("e.currentTarget : ", e.currentTarget); // 클릭한 버튼 가리킴. 버튼마다 onclick한 꼴임
+      
+             if ($(this).attr('id') === 'b2') // $(this)는 e.target을 가리킨다.
+                 console.log("버튼2 제이쿼리 클릭!!!");
+         })
+     </script>
+</body>
+</html>

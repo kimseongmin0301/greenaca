@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+	*{
+  		padding: 0;
+  		margin: 0;
+	}
+	html,body{
+		margin: 0;
+		height: 100%;
+	}
+	#id,#pw{
+		width:160px;
+	}
+	p{
+		font-size:1.0em;
+	}
+	img{
+		margin:10px;
+	}
+	.container{
+		display: flex;
+  		flex-direction: column;
+		/* justify-content: space-between; */
+  		align-items: center;
+  		width:50%; height:100vh;
+  		/* border: 1px solid black; */
+  		margin:0 auto;
+	}
+	
+	.header{
+		display:flex;
+		flex-wrap: wrap;
+		width: 1024px;
+  		height:250px;
+  		/* border: 1px solid red; */
+  		background-color: #2f4353;
+		background-image: linear-gradient(to bottom, #2f4353 0%, #d2ccc4 74%);
+
+	}
+	.content{
+		display:flex;
+		width:1024px;
+
+		/* border:1px solid blue; */
+		background-color: lightgreen;
+		margin:10px;
+	}
+
+	.section1{
+		color:red;
+		display: flex;
+		width: 100%;
+		align-items: flex-end;
+		height: 60%;
+		margin:0 0 0 10px;
+	}
+	.section2{
+		display: flex;
+		width:25%;
+		height: 40%;
+		align-items: flex-end;
+		margin:0 0 0 10px;
+	}
+	.section3{
+		display: flex;
+		align-items: flex-end;
+		width:70%;
+		flex-direction: row-reverse;
+		color:blue;
+		margin:0 10px 10px 0;
+	}
+
+
+	table,tr, td{
+		border:solid black 1px;
+		border-collapse: collapse;
+		background-color:white;
+		padding:4px;
+	}
+
+	.content_login{
+
+	}
+	.login{
+		width:170px;
+		margin:10px 10px 0 10px;
+		background-color: lightblue;
+		border: solid red 1px;
+		padding:20px 0 20px 10px;
+		text-align: left;
+	}
+	.content_login:nth-child(1) { flex-grow: 1; }
+	.content_news:nth-child(2) { flex-grow: 2; }
+	.content_ad:nth-child(3) { flex-grow: 1; }
+
+	.content_news{
+		display:flex;
+		flex-direction: column;
+		
+	}
+	.news{
+		background-color: lightyellow;
+		border-radius: 10px;
+		border:solid black 1px;
+		margin:10px 10px 0 10px;
+		padding:20px;
+		width:auto;
+	}
+	/* .content_ad{
+		display:flex;
+		flex-direction: column;
+	} */
+
+	.ad{
+		width:auto;
+		margin:10px 10px 00px 10px;
+		padding:20px 10px 20px 10px;
+		background-color: lightyellow;
+		border-radius: 10px;
+		border:solid red 2px;
+	}

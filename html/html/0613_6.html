@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>border-collapse</title>
+<style>
+	table, tr, td{
+		border:solid 1px black;
+	}
+	#table1{
+	 border-collapse: separate;
+	}
+	#table2{
+	 border-collapse: collapse;
+	}
+</style>
+
+
+</head>
+<body>
+	separate:각 셀마다 경계선을  따로 그림
+	<table id="table1">
+		<tr>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+		</tr>
+		<tr>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+		</tr>		
+	</table>
+	collapse:각 셀마다 경계선을  따로 그림
+	<table id="table2">
+		<tr>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+		</tr>
+		<tr>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+			<td>북한산</td>
+		</tr>		
+	</table>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>absoluteparent2</title>
+	<style>
+	div{
+		width:200px; height:200px;
+		background: blue
+	}
+	img{
+		width:100px; height:100px;
+		left:50px; top:50px;
+		position:absolute;
+	}
+	#s{
+		position:relative;
+	}
+	</style>
+</head>
+<body>
+	absolute는 static이 아닌 첫 부모를 기준으로 한다.
+
+		<div id="s">
+			<img src="img/cosmos.jpg">
+		</div>
+
+</body>
+</html>
