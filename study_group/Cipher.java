@@ -6,7 +6,7 @@ public class Cipher {
 
         Scanner sc = new Scanner(System.in);
         
-        String inPut = sc.next();
+        String inPut = sc.nextLine();
         String outPut = "";
 
         //문자 길이만큼 반복
