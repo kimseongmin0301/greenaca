@@ -3,7 +3,7 @@ package Operator;
 import java.util.Scanner;
 
 public class Exam0704 {
-
+    Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
         Exam0704 exam = new Exam0704();
 
@@ -15,22 +15,20 @@ public class Exam0704 {
     private void Ex1(){
         int apple = 123;
         int basket = 10;
-        int cnt = 0;
+        int cnt = apple / basket;
 
         if(apple % basket != 0){
-            cnt = apple / basket + 1;
-        }else{
-            cnt = apple / basket;
+            cnt += 1;
         }
+
         System.out.println(cnt);
     }
     private void Ex2(){
-        int num;
         String posNum = "양수", negNum = "음수", zero = "0";
-        Scanner sc = new Scanner(System.in);
-        num = sc.nextInt();
+        int num = sc.nextInt();
 
         String answer = num>0 ? posNum:  num < 0 ? negNum : zero;
+
         System.out.println(answer);
     }
     private void Ex3(){
@@ -56,17 +54,13 @@ public class Exam0704 {
         System.out.println(result);
     }
     private void Ex4(){
-        Scanner sc = new Scanner(System.in);
-        char ch;
-        ch = sc.next().charAt(0);
+        char ch = sc.next().charAt(0);
+        boolean b = false;
 
-        boolean b;
         if((ch>64 && ch<91) || (ch >96 && ch <123) || (ch>47 && ch<58)) {
             b= true;
-        }else{
-            b= false;
         }
-        System.out.println(b);
 
+        System.out.println(b);
     }
 }
