@@ -11,7 +11,7 @@ public class Cipher {
 
         //문자 길이만큼 반복
         for(int i=0; i<inPut.length(); i++){
-            int cipher = (int)inPut.charAt(i);      //첫 문자부터 아스키코드값으로 형변환
+            int cipher = inPut.charAt(i);      //첫 문자부터 아스키코드값으로 형변환
             
             if((cipher > 64 && cipher < 90) || (cipher > 96 && cipher < 123)){      //영어만 바뀌게 조건적용
                 cipher = perform.encoding(cipher);
