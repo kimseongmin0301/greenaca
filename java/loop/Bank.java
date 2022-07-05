@@ -34,6 +34,9 @@ public class Bank {
                     System.out.print("종료하겠습니다.");
                     banking = false;
                     break;
+                default:
+                    System.out.println("잘못입력했습니다. 1 ~ 4 선택하시오.");
+                    break;
             }
         }
     }
