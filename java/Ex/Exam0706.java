@@ -37,6 +37,7 @@ public class Exam0706 {
             }
         }
     }
+
     private void ex3(){
         int money = 59780;
         int[] coin = {10000,5000,1000,500,100,10};
