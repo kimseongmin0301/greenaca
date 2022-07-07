@@ -5,5 +5,8 @@ public class Object2 {
         ObjectEx oj = new ObjectEx();
 
         oj.ease();
+        oj.weight();
+        System.out.println(oj.width);
+
     }
 }

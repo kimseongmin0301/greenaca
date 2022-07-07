@@ -6,13 +6,13 @@ public class ObjectEx {
     int ratio = 75;
 
     void weight(){
-
+        System.out.println("bb");
     }
     void transform(){
 
     }
     static void ease(){
-        System.out.print("a");
+        System.out.println("a");
     }
 
 }
