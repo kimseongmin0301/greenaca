@@ -70,7 +70,9 @@ public class Exam0706 {
                 System.out.print(arr.get(i));}
         }
         System.out.println("}");
+        System.out.println(arr);
         System.out.println("약수의 개수는 "+num+"개 입니다.");
+
     }
     private void ex5(){
         int odd=0, even=0;
