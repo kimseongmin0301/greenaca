@@ -136,20 +136,20 @@ class Calculator{
 
 class Student{
     private static Scanner sc = new Scanner(System.in);
-    private String name;
-    private int	ban;
-    private int	no;
-    private int	kor;
-    private int	eng;
-    private int	math;
+    private static String name;
+    private static int	ban;
+    private static int	no;
+    private static int	kor;
+    private static int	eng;
+    private static int	math;
 
     static void getTotal(){
         System.out.println("");
         System.out.println("(총합구하기)점수를 적으세요");
 
-        int kor = sc.nextInt();
-        int eng = sc.nextInt();
-        int math = sc.nextInt();
+        kor = sc.nextInt();
+        eng = sc.nextInt();
+        math = sc.nextInt();
         float sum = (kor + eng + math);
 
         System.out.println("총합은 : " + sum);
@@ -159,9 +159,9 @@ class Student{
         System.out.println("");
         System.out.println("(평균구하기)점수를 적으세요");
 
-        int kor = sc.nextInt();
-        int eng = sc.nextInt();
-        int math = sc.nextInt();
+        kor = sc.nextInt();
+        eng = sc.nextInt();
+        math = sc.nextInt();
         int sum = kor + eng + math;
 
         System.out.println("평균값은 : " + (float)(Math.round((sum/3f) * 10))/ 10);
