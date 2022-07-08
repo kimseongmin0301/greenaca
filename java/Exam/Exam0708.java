@@ -68,6 +68,9 @@ public class Exam0708 {
     }
 
     private void Ex3(){
+        System.out.println("");
+        System.out.println("a 부터 b까지의 합구하기");
+
         int first = sc.nextInt();
         int second = sc.nextInt();
         int sum = 0;
@@ -134,6 +137,9 @@ class Student{
     private int	math;
 
     static void getTotal(){
+        System.out.println("");
+        System.out.println("(총합구하기)점수를 적으세요");
+
         int kor = sc.nextInt();
         int eng = sc.nextInt();
         int math = sc.nextInt();
@@ -143,6 +149,9 @@ class Student{
     }
 
     static void getAverage(){
+        System.out.println("");
+        System.out.println("(평균구하기)점수를 적으세요");
+
         int kor = sc.nextInt();
         int eng = sc.nextInt();
         int math = sc.nextInt();
