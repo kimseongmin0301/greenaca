@@ -8,10 +8,10 @@ public class Exam0708 {
     public static void main(String[] args) {
         Exam0708 exam = new Exam0708();
 
-//        exam.Ex1();
-//        exam.Ex2();
+        exam.Ex1();
+        exam.Ex2();
         exam.Ex3();
-//        exam.Ex5();
+        exam.Ex5();
     }
 
     private void Ex1(){
