@@ -8,10 +8,10 @@ public class Exam0708 {
     public static void main(String[] args) {
         Exam0708 exam = new Exam0708();
 
-        exam.Ex1();
-        exam.Ex2();
+//        exam.Ex1();
+//        exam.Ex2();
         exam.Ex3();
-        exam.Ex5();
+//        exam.Ex5();
     }
 
     private void Ex1(){
@@ -68,27 +68,18 @@ public class Exam0708 {
     }
 
     private void Ex3(){
+        Calculator cal = new Calculator();
+
         System.out.println("");
         System.out.println("a 부터 b까지의 합구하기");
 
         int first = sc.nextInt();
         int second = sc.nextInt();
-        int sum = 0;
-
-        if(first < second) {
-            for (int i = first; i <= second; i++) {
-                sum += i;
-            }
-        }else {
-            for (int i = second; i <= first; i++) {
-                sum += i;
-            }
-        }
 
         System.out.println("--------------------");
         System.out.println("a " + "b " + "result");
         System.out.println("--------------------");
-        System.out.println(first+ " " + second+ " " + sum);
+        System.out.println(first+ " " + second+ " " + cal.solution(first,second));
     }
 
     private void Ex5(){
@@ -124,6 +115,22 @@ class Calculator{
     }
     static double playNum(double x, double y){
         return x / y;
+    }
+    static int solution(int x, int y){
+        int first = x;
+        int second = y;
+        int sum = 0;
+        if(first < second) {
+            for (int i = first; i <= second; i++) {
+                sum += i;
+            }
+        }else {
+            for (int i = second; i <= first; i++) {
+                sum += i;
+            }
+        }
+
+        return sum;
     }
 }
 
