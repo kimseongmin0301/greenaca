@@ -1,6 +1,5 @@
 package variable;
 
-import Operator.Operator;
 
 public class TAY {
     public static class Car {
