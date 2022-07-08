@@ -1,7 +1,7 @@
 package object;
 
 public class ObjectEx {
-    int width = 205;
+    static int width = 2055 ;
     int kyung = 15;
     int ratio = 75;
 
