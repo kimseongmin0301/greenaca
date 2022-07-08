@@ -147,7 +147,6 @@ class Student{
         int eng = sc.nextInt();
         int math = sc.nextInt();
         int sum = kor + eng + math;
-        float avg =Math.round((sum/3) * 100) / 100;
 
         System.out.println("평균값은 : " + (float)(Math.round((sum/3f) * 10))/ 10);
     }
