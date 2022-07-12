@@ -144,4 +144,15 @@
 // }else{
 //     console.log();
 // }
-console.log("123")
+var cols = document.querySelectorAll("#cols .btn");
+
+for (var i = 0; i < cols.length; i++) {
+    cols[i].addEventListener("click", click);
+}
+cols[1].style.color = "red";
+
+var text = document.getElementById("text");
+
+function click(e) {
+    text.innerHTML = "text";
+}
