@@ -1,12 +1,3 @@
-/**
- * 퉤
- * 퉤퉤퉤퉤퉤퉤ㅜ테퉤ㅜ테ㅜ테ㅜ테ㅜ테퉤퉤퉤
- * 왜 ㅠㅠ 나를 괴롭히는거니
- * 이제 진자 컴퓨터처럼 생각하고 푼다 하...
- * 사람처럼 생각하니 더 돌아간다. 난 화가난다 화가 화 ㅎ확호가호가나난다화가난다
- * ㅁㄴㅇ라ㅣ;ㅓㅁ니;아러매ㅑㄴㄷ럼ㄴ;ㅏㅣㅇㄹ  
- */
-
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -26,14 +17,12 @@ public class Test0712 {
         int [] arr = null;
         boolean checked = false;
 
-        System.out.println(arr);
         while(true){
             cnt++;
             System.out.println("실행 결과");
             System.out.println("----------------------------------------");
             System.out.println("1. 학생수 | 2. 점수입력 | 3. 점수리스트 | 4. 분석 | 5. 종료");
             System.out.println("----------------------------------------");
-
 
             if(!checked && cnt == 1 && restart == 0) {  
                 select = sc.nextInt();   
@@ -53,12 +42,11 @@ public class Test0712 {
                     checked = true;
                 }
                         
-                if(checked && cnt > 1){
+                if(cnt > 1){
                     int afSelect = sc.nextInt();
                     if(afSelect == 1){
                         checked = false;
                         cnt=0;
-                        
                     }else if(afSelect == 2){
                         arr = new int[stu];
                         System.out.println(stu + "개의 점수입력");
@@ -72,7 +60,6 @@ public class Test0712 {
                             }
                         }else{
                             System.out.println("점수를 먼저 넣어");
-                            continue;
                         }
                     }else if(afSelect == 4){
                         if(arr != null){
@@ -81,7 +68,6 @@ public class Test0712 {
                             System.out.println("평균 점수 : " + avg(arr));
                         }else{
                             System.out.println("점수를 먼저 넣어");
-                            continue;
                         }
                     }else if(afSelect == 5){
                         System.out.println("프로그램 종료");
@@ -99,13 +85,9 @@ public class Test0712 {
         }
     }
 
-    double avg(int avg[]){
+    double avg(int[] avg){
         double sum = 0;
-        double ar = 0;
-        for(int i=0; i<avg.length; i++){
-            sum += avg[i];
-        }
-        ar = sum/avg.length;
-        return ar;
+        for (int i : avg) { sum += i; }
+        return sum/avg.length;
     }
 }
