@@ -10,8 +10,12 @@ public class Member {
 
         MemberService user1 = new MemberService(name,id);
 
-        if(user1.login(name,id))
+        if(user1.login(name,id)) {
+            System.out.println("로그인됨");
             user1.logout(name);
+        }else {
+            System.out.println("다시 입력해라");
+        }
     }
 }
 
@@ -24,6 +28,10 @@ class MemberService{
     MemberService(String name, String id){
         this.name = name;
         this.id = id;
+    }
+    MemberService(){
+        this.name = "";
+        this.id = "";
     }
 
     private boolean result;
