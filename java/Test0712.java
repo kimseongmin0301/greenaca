@@ -99,11 +99,6 @@ public class Test0712 {
         }
     }
 
-    int[] makeArray(int x){
-        int [] arr = new int[x];
-        return arr;
-    }
-
     double avg(int avg[]){
         double sum = 0;
         double ar = 0;
