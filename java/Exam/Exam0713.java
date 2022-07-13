@@ -45,9 +45,9 @@ class SubEntry extends Entry{
     @Override
     public void PrintView(){
         System.out.println("*****약어사전******");
-        System.out.println("약어 : " + super.word);
-        System.out.println("원어 : " + this.definition);
-        System.out.println("시기 : " + this.year + "년");
+        System.out.println("약어 : " + word);
+        System.out.println("원어 : " + definition);
+        System.out.println("시기 : " + year + "년");
     }
 }
 
