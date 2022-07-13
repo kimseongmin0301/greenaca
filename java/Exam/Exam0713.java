@@ -109,6 +109,6 @@ class SubHealth extends Health{
         System.out.println("신장 - " + super.tall + "Cm");
         System.out.println("체중 - " + super.weight + "Kg");
 
-        System.out.println("당신의 비만도는 " + Math.round(this.fat*100)/100.0 + "이고, " + result + "입니다.");
+        System.out.println("당신의 비만도는 " + Math.round(fat*100)/100.0 + "이고, " + result + "입니다.");
     }
 }
