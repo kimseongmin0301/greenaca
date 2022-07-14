@@ -6,3 +6,4 @@ public class PublicDefault {
     public void defauls(){};
     void defad(){}
 }
+
