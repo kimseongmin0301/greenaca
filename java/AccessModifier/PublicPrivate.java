@@ -5,6 +5,7 @@ public class PublicPrivate {
 
     private int b = 1;
 
+
     public void pubadd(){
     }
 
