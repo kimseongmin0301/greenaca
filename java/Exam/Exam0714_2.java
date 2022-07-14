@@ -79,7 +79,7 @@ public class Exam0714_2 {
                             System.out.println("결과 : 출금실패");
                         else
                             System.out.println("결과 : 출금완료");
-                        
+
                     bank[i].setMoney(bank[i].getMoney() - money);
                 }
             }
