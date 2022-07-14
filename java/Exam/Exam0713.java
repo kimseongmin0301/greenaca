@@ -34,10 +34,10 @@ class SubEntry extends Entry{
     int year;
 
     SubEntry(String w){
-        super(w);
+        word = w;
     }
     SubEntry(String w, String d, int y){
-        super(w);
+        this(w);
         this.definition = d;
         this.year = y;
     }
