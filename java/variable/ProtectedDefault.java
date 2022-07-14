@@ -8,3 +8,4 @@ public class ProtectedDefault {
     protected void Pro(){}
 
 }
+
