@@ -14,6 +14,7 @@ public class Exam0714_2 {
         boolean run = true;
 
         while (run) {
+            System.out.println("count : " + count);
             System.out.println("===============================");
             System.out.println("1. 계좌생성 | 2. 계좌목록 | 3. 예금 | 4. 출금 | 5. 종료|");
             System.out.println("===============================");
@@ -45,8 +46,14 @@ public class Exam0714_2 {
         String name = sc.next();
         System.out.println("초기입금액 : ");
         int money = sc.nextInt();
-        bank[count] = new BankApplication(bankNum, name, money);
-        count++;
+        System.out.println(findBankNum(bankNum));
+        if (findBankNum(bankNum)) {
+            bank[count] = new BankApplication(bankNum, name, money);
+            count++;
+        } else {
+            System.out.println("계좌 생성 실패. 동일 계좌 존재");
+        }
+
     }
 
     private static void accountList() {
@@ -82,10 +89,10 @@ public class Exam0714_2 {
         int money = sc.nextInt();
 
         BankApplication account = findAccount(bankNum);
-        if(account.getMoney() - money >= 0){
+        if (account.getMoney() - money >= 0) {
             account.setMoney(account.getMoney() - money);
             System.out.println("출금 완료");
-        }else{
+        } else {
             System.out.println("출금 실패");
         }
     }
@@ -99,6 +106,15 @@ public class Exam0714_2 {
             }
         }
         return account;
+    }
+
+    private static boolean findBankNum(String BankNum) {
+        for (int i = 0; i < count; i++) {
+            if (BankNum.equals(bank[i].getBankNum())){
+                return false;
+            }
+        }
+        return true;
     }
 }
 
