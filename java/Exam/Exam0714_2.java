@@ -53,7 +53,6 @@ public class Exam0714_2 {
         } else {
             System.out.println("계좌 생성 실패. 동일 계좌 존재");
         }
-
     }
 
     private static void accountList() {
@@ -70,17 +69,19 @@ public class Exam0714_2 {
         System.out.println("---------");
         System.out.println("계좌번호 : ");
         String bankNum = sc.next();
-        System.out.println("예금액 : ");
-        int money = sc.nextInt();
 
         BankApplication account = findAccount(bankNum);
         if(account != null){
+            System.out.println("예금액 : ");
+            int money = sc.nextInt();
+
             account.setMoney(account.getMoney() + money);
+
             System.out.println("결과 : 예금완료");
+            System.out.println("잔고 금액 : " + account.getMoney());
         }else{
             System.out.println("찾는 계좌번호가 없습니다.");
         }
-        
     }
 
     private static void withdraw() {
@@ -89,16 +90,18 @@ public class Exam0714_2 {
         System.out.println("---------");
         System.out.println("계좌번호 : ");
         String bankNum = sc.next();
-        System.out.println("출금액 : ");
-        int money = sc.nextInt();
 
         BankApplication account = findAccount(bankNum);
         if(account != null){
+            System.out.println("출금액 : ");
+            int money = sc.nextInt();
+
             if (account.getMoney() - money >= 0) {
                 account.setMoney(account.getMoney() - money);
-                System.out.println("출금 완료");
+                System.out.println("출금 완료.");
+                System.out.println("잔고 금액 : " + account.getMoney());
             } else {
-                System.out.println("출금 실패");
+                System.out.println("출금 실패. 계좌에 잔고가 부족합니다.");
             }
         }else{
             System.out.println("찾는 계좌번호가 없습니다.");
