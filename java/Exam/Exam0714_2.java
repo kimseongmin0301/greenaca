@@ -14,7 +14,6 @@ public class Exam0714_2 {
         boolean run = true;
 
         while (run) {
-            System.out.println("count : " + count);
             System.out.println("===============================");
             System.out.println("1. 계좌생성 | 2. 계좌목록 | 3. 예금 | 4. 출금 | 5. 종료|");
             System.out.println("===============================");
@@ -46,7 +45,7 @@ public class Exam0714_2 {
         String name = sc.next();
         System.out.println("초기입금액 : ");
         int money = sc.nextInt();
-        System.out.println(findBankNum(bankNum));
+
         if (findBankNum(bankNum)) {
             bank[count] = new BankApplication(bankNum, name, money);
             count++;
