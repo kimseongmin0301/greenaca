@@ -1,12 +1,13 @@
 package Exam;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * 객체배열
  */
 public class Exam0714_2 {
-    private static BankApplication[] bank = new BankApplication[10];
+    private static ArrayList<BankApplication> bank = new ArrayList<>();
     private static Scanner sc = new Scanner(System.in);
     private static int count = 0;
 
@@ -47,7 +48,7 @@ public class Exam0714_2 {
         int money = sc.nextInt();
 
         if (findBankNum(bankNum)) {
-            bank[count] = new BankApplication(bankNum, name, money);
+            bank.add(new BankApplication(bankNum, name, money));
             count++;
         } else {
             System.out.println("계좌 생성 실패. 동일 계좌 존재");
@@ -60,7 +61,7 @@ public class Exam0714_2 {
         System.out.println("계좌목록");
         System.out.println("---------");
         for (int i = 0; i < count; i++)
-            System.out.println(bank[i].getBankNum() + " " + bank[i].getName() + " " + bank[i].getMoney());
+            System.out.println(bank.get(i).getBankNum() + " " + bank.get(i).getName() + " " + bank.get(i).getMoney());
     }
 
     private static void deposit() {
@@ -73,9 +74,13 @@ public class Exam0714_2 {
         int money = sc.nextInt();
 
         BankApplication account = findAccount(bankNum);
-        account.setMoney(account.getMoney() + money);
-
-        System.out.println("결과 : 예금완료");
+        if(account != null){
+            account.setMoney(account.getMoney() + money);
+            System.out.println("결과 : 예금완료");
+        }else{
+            System.out.println("찾는 계좌번호가 없습니다.");
+        }
+        
     }
 
     private static void withdraw() {
@@ -88,19 +93,23 @@ public class Exam0714_2 {
         int money = sc.nextInt();
 
         BankApplication account = findAccount(bankNum);
-        if (account.getMoney() - money >= 0) {
-            account.setMoney(account.getMoney() - money);
-            System.out.println("출금 완료");
-        } else {
-            System.out.println("출금 실패");
+        if(account != null){
+            if (account.getMoney() - money >= 0) {
+                account.setMoney(account.getMoney() - money);
+                System.out.println("출금 완료");
+            } else {
+                System.out.println("출금 실패");
+            }
+        }else{
+            System.out.println("찾는 계좌번호가 없습니다.");
         }
     }
 
     private static BankApplication findAccount(String BankNum) {
         BankApplication account = null;
         for (int i = 0; i < count; i++) {
-            if (bank[i].getBankNum().equals(BankNum)) {
-                account = bank[i];
+            if (bank.get(i).getBankNum().equals(BankNum)) {
+                account = bank.get(i);
                 break;
             }
         }
@@ -109,7 +118,7 @@ public class Exam0714_2 {
 
     private static boolean findBankNum(String BankNum) {
         for (int i = 0; i < count; i++) {
-            if (BankNum.equals(bank[i].getBankNum())){
+            if (BankNum.equals(bank.get(i).getBankNum())){
                 return false;
             }
         }
