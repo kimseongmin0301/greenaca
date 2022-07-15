@@ -18,17 +18,26 @@ class Product {
     Product(int price){
         this.price = price;
     }
+
+    public int getPrice() {
+        return price;
+    }
 }
 
 //제품 사는 사람 객체
 class Buyer{
     int money=1000;
+    private int cnt = 0;
+    Product[] item = new Product[5];
 
     void buy(Product p){
         money -= p.price;
+
         System.out.println(p.getClass().getSimpleName() + "제품을 구입하셨습니다.");
         System.out.println("가격은 " + p.price + "만원 입니다.");
         System.out.println("남은 가격은 " + money + "만원 입니다.");
+
+        item[cnt++] = p;
     }
 }
 
