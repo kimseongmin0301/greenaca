@@ -6,4 +6,7 @@ public class Woman extends People{
         super.printInfo();
         System.out.println("그리고 여자입니다.");
     }
+    void makeup(){
+        System.out.println("메이크업");
+    }
 }

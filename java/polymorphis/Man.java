@@ -6,4 +6,7 @@ public class Man extends People{
         super.printInfo();
         System.out.println("그리고 남자입니다.");
     }
+    void enlist(){
+        System.out.println("군대감");
+    }
 }

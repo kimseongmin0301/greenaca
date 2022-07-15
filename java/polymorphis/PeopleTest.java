@@ -13,10 +13,11 @@ public class PeopleTest {
 
         People p = new Man();
         p.printInfo();
+        ((Man)p).enlist();
 
         p = new Woman();
         p.printInfo();
-
+        ((Woman)p).makeup();
 
     }
 }
