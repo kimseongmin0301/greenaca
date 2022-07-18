@@ -6,7 +6,6 @@ public class Exam0718 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int cnt=0;
-        int user;
         boolean game = true;
         int com = (int) ((Math.random()*100)+1);
 
@@ -14,7 +13,7 @@ public class Exam0718 {
             System.out.println("1과 100사이의 값을 입력하세요 : ");
 
             try{
-                user = Integer.parseInt(sc.nextLine());
+                int user = Integer.parseInt(sc.nextLine());
                 cnt++;
 
                 if(com > user){
