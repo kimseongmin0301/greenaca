@@ -23,6 +23,5 @@ public class Exception {
         finally {
             System.out.println(6);
         }
-
     }
 }
