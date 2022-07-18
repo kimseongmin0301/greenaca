@@ -1,5 +1,6 @@
 package Exam;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exam0718 {
@@ -14,8 +15,8 @@ public class Exam0718 {
 
             try{
                 Scanner sc = new Scanner(System.in);
-                user = Integer.parseInt(sc.nextLine());
-            }catch(NumberFormatException e){
+                user = sc.nextInt();
+            }catch(InputMismatchException e){
                 System.out.println("숫자만 입력할 수 있습니다. 다시 입력해주세요~");
                 continue;
             }
