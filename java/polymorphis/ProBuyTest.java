@@ -1,7 +1,7 @@
 package polymorphis;
 
 //main
-public class ProByuTest{
+public class ProBuyTest {
     public static void main(String[] args) {
         Buyer b = new Buyer();
 
