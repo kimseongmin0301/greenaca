@@ -6,11 +6,10 @@ import java.util.Scanner;
 public class Exam0718 {
     public static void main(String[] args) {
         int cnt=0;
-        boolean game = true;
         int com = (int) ((Math.random()*100)+1);
         int user = 0;
 
-        while(game){
+        while(cnt >= 0){
             System.out.println("1과 100사이의 값을 입력하세요 : ");
 
             try{
@@ -26,7 +25,7 @@ public class Exam0718 {
             if(com == user){
                 System.out.println("정답");
                 System.out.println(cnt + "번만에 맞추셨습니다.");
-                game = false;
+                break;
             }
             if(com < user) {
                 System.out.println("더 작은수를 입력하세요");
