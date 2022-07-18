@@ -1,6 +1,5 @@
 package Exam;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exam0718 {
