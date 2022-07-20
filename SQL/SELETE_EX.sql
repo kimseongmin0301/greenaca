@@ -72,7 +72,7 @@ SELECT ENAME, JOB
 from emp
 where DEPTNO ='20' AND SAL >= '400';
 
--- 월급이 2000대인  사원과 직책 검색
+-- 월급이 2000대인  사원과 직책 검색(between)
 select ENAME, JOB
 FROM EMP
 WHERE SAL BETWEEN 2000 AND 2999;
@@ -81,3 +81,24 @@ WHERE SAL BETWEEN 2000 AND 2999;
 SELECT EMPNO, ENAME
 FROM EMP
 WHERE JOB = 'SALESMAN' OR JOB = 'MANAGER';
+
+-- 사원테이블에서 직업이 SALESMAN 이거나 MANAGER인 사원의 사원번호와 이름을 검색(in)
+SELECT EMPNO, ENAME
+FROM EMP
+WHERE JOB in('SALESMAN','MANAGER');
+
+-- 사원테이블에서 COMM이 NULL값인 사원의 사원번호와 이름을 검색
+SELECT EMPNO, ENAME
+FROM EMP
+WHERE COMM IS NULL;
+
+-- like 연산자
+-- 사원테이블에서 이름이 smith인 사원의 월급과 부서번호를 검색
+select sal, deptno
+from emp
+where ename like 'smith';
+
+-- 사원테이블에서 이름이 s로 시작하는 사원의 월급과 부서번호를 검색
+select sal, deptno
+from emp
+where ename like 's%';
