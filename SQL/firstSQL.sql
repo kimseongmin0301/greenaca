@@ -39,9 +39,6 @@ delete from member;
 select * from member;
 -- 검색
 
-
-
-
 create table member(
 	id				varchar(20)			primary key,
     password		varchar(20)			not null,
@@ -52,7 +49,6 @@ create table member(
     age				int(2)
 );
 
-
 insert into member	(ID, password, addr, phone,email, name, age)
 values
 ('A','aaaa1','ulsan','010012345678','pose1358@naver.com','Jhon',26),
@@ -60,15 +56,14 @@ values
 ('C','aaaa3','ulsan','01012345678','pose1358@naver.com','Alice',20),
 ('D','aaaa4','ulsan','01092100234','pose1358@naver.com','Quid',23);
 
-alter table member add column bno int auto_increment;
-
-
 update member set phone = '01001234567' where id = 'A';
 
 update member set name = '이순신' where name = 'Alice';
 update member set password = 'rkskek123' where id = 'D';
 
-select * from member where id = 'C';
+select * from member where age between 22 and 23;
+
+delete from member where id = 'A';
 
 
 create table board(
@@ -81,11 +76,34 @@ create table board(
     id			varchar(10)
 );
 
-insert into board(title, content, writer, id)
-values
-('안녕','운영진입니다.','운영진','admin'), 
-('제목','내용 추가','정자바','aaaa1234'); 
 
+
+-- alter문으로 foreign key 설정
+-- alter table 테이블명 add contraint 제약조건명(boardid_fk) <- 내맘대로 적는거임
+-- foreign key(컬럼명) references 테이블명(필드명)
+
+alter table board add constraint boardid_fk
+foreign key(id) references member(id)
+on delete cascade
+on update cascade;
+
+alter table board drop constraint boardid_fk;
+
+delete from board where bno = 2;
+
+insert into board(id)
+values
+('A');
 
 select * from board;
-drop table board;
+select * from member;
+
+delete from member where id='B';
+
+
+
+
+
+
+
+
