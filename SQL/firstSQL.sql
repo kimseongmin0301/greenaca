@@ -52,9 +52,7 @@ create table member(
 insert into member	(ID, password, addr, phone,email, name, age)
 values
 ('A','aaaa1','ulsan','010012345678','pose1358@naver.com','Jhon',26),
-('B','aaaa2','ulsan','01098765432','pose1358@naver.com','Bob',22),
-('C','aaaa3','ulsan','01012345678','pose1358@naver.com','Alice',20),
-('D','aaaa4','ulsan','01092100234','pose1358@naver.com','Quid',23);
+('B','aaaa2','ulsan','01098765432','pose1358@naver.com','Bob',22);
 
 update member set phone = '01001234567' where id = 'A';
 
@@ -75,6 +73,12 @@ create table board(
     cnt			int			default 	0,
     id			varchar(10)
 );
+
+insert into board(title, content, writer, id)
+values
+('ㅎㅇ','ㅎㅇㅎㅇㅎㅇ','고드롱','A'),
+('ㅠㅠㅠ','ㅁ낭러ㅣ앙ㅇ','허추마','B'),
+('ㅎㅋ','ㅎ234234','가만야','D');
 
 
 
@@ -99,11 +103,3 @@ select * from board;
 select * from member;
 
 delete from member where id='B';
-
-
-
-
-
-
-
-
