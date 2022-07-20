@@ -1,9 +1,9 @@
 -- 검색할때 별명붙이기 
-SELECT bno as '게시판번호',
- title as '제목', 
- writer as '작성자',
- regdate as '작성일자',
- cnt as '조회수'
+SELECT	bno as '게시판번호',
+		title as '제목', 
+		writer as '작성자',
+		regdate as '작성일자',
+		cnt as '조회수'
 FROM BOARD;
 
 -- 부모 자식 테이블 만들기 foreign key
@@ -148,6 +148,10 @@ where hiredate = 811117;
 select ename, sal
 from emp
 where sal >= 3600;
+
+select ename, sal, job, mgr
+from emp
+where sal <= 1200;
 
 select ename, job, mgr
 from emp
