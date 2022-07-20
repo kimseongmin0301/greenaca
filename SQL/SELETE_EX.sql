@@ -102,3 +102,8 @@ where ename like 'smith';
 select sal, deptno
 from emp
 where ename like 's%';
+
+-- order by ASC, DESC. 오름차순 내림차순
+-- 급여가 높은순부터 정렬
+select * from emp
+order by sal desc;
