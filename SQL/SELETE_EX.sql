@@ -71,3 +71,13 @@ where EMPNO = '7566';
 SELECT ENAME, JOB
 from emp
 where DEPTNO ='20' AND SAL >= '400';
+
+-- 월급이 2000대인  사원과 직책 검색
+select ENAME, JOB
+FROM EMP
+WHERE SAL BETWEEN 2000 AND 2999;
+
+-- 사원테이블에서 직업이 SALESMAN 이거나 MANAGER인 사원의 사원번호와 이름을 검색
+SELECT EMPNO, ENAME
+FROM EMP
+WHERE JOB = 'SALESMAN' OR JOB = 'MANAGER';
