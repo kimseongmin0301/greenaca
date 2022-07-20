@@ -107,3 +107,64 @@ where ename like 's%';
 -- 급여가 높은순부터 정렬
 select * from emp
 order by sal desc;
+
+
+
+/*
+1. 사원 테이블에서 사원 번호와 이름과 월급을 출력하라
+2. 직위가 'SALESMAN'이고 월급이 1000이상인 사원의 이름과 월급을 출력하라.
+3. 직위가 MANAGER인 사원을 뽑는데 월급이 높은 사람순으로 이름, 직위, 월급을 출력하라.
+4. 이름이 SCOTT인 사원의 이름, 월급, 직업, 입사일, 부서 번호를 출력하라
+5. 81년 11월 17일에 입사한 사원의 이름, 월급, 직업, 입사일을 출력하라
+6. 월급이 3600 이상인 사원들의 이름과 월급을 출력하라
+7. 월급이 1200 이하인 사원들의 이름과 월급, 직업, 부서번호를 출력하라
+8. 직업이 SALESMAN이 아닌 사원들의 이름과 부서 번호, 직업을 출력하라
+9. 월급이 1000에서 3000사이가 아닌 사원들의 이름과 월급을 출력하라
+10. 이름의 끝 글자가 T로 끝나는 사원들의 이름과 월급을 출력하라
+11. 커미션이 NULL인 사원들의 이름과 커미션을 출력하라
+12. 직업이 SALESMAN, ANALYST, MANAGER가 아닌 사원들의 이름, 월급, 직업을 출력하라
+*/
+
+select empno, ename, sal
+from emp;
+
+select ename, sal
+from emp
+where job = 'salesman' and sal >= 1000;
+
+select ename, job, sal
+from emp
+where job='manager'
+order by sal desc;
+
+select ename, sal, job, hiredate, mgr
+from emp
+where ename = 'scott';
+
+select ename, sal, job, hiredate
+from emp
+where hiredate = 811117;
+
+select ename, sal
+from emp
+where sal >= 3600;
+
+select ename, job, mgr
+from emp
+where job != 'salesman';
+
+select ename, sal
+from emp
+where sal not between 1000 and 3000;
+
+select ename, sal
+from emp
+where ename like '%T';
+
+select ename, comm
+from emp
+where comm is null;
+
+select ename, sal, job
+from emp
+where job not in('salesman', 'analyst', 'manager');
