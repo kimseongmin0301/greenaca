@@ -1,3 +1,5 @@
+package variable;
+
 import java.util.*;
 import java.util.Scanner;
 
