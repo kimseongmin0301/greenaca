@@ -53,3 +53,23 @@ delimiter ;
 -- fu1 함수 호출
 select fu1(10,20) as a;
 select fu2();
+
+delimiter //
+create function F_SALES(a int) returns int
+begin
+	declare b int;
+	select sum(sal) 
+	into b
+    from emp
+    where deptno = a
+    group by deptno;
+    return b;
+end
+//
+delimiter ;
+
+drop function f_sales;
+
+select F_SALES(10);
+select F_SALES(20);
+select F_SALES(30);
