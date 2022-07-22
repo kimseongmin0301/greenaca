@@ -29,6 +29,10 @@ HINT : IFNULL사용(구글로 검색해보세요.)
 24) 이름이 'ALLEN'인 사원의 부서명을 출력하라.
 25) DEPT Table 에는 존재하는 부서코드이지만 해당부서에 근무하는 사람이 존재하지 않는 경우의 결과를 출력하라.
 */
+select e.ename, d.dname, e.sal, e.job
+from emp  e, dept d
+where job = (select job from emp where ename = 'ALLEN')
+      and e.DEPTNO = d.DEPTNO;
 
 /*
 select ename, dname, sal, job
@@ -36,11 +40,6 @@ from emp  e
 join dept d
 on e.DEPTNO = d.DEPTNO
 where job = (select job from emp where ename = 'ALLEN');
-
-select ename, dname, sal, job
-from emp  e, dept d
-where job = (select job from emp where ename = 'ALLEN')
-      and e.DEPTNO = d.DEPTNO;
       
 select B.ename
 	 , C.dname
@@ -54,9 +53,6 @@ from (
 where A.JOB = B.JOB
   and B.DEPTNO = C.DEPTNO
 */
-
-
-
 /*
 select ename, dname, sal, job
 from emp  e, dept d
@@ -69,25 +65,20 @@ on e.DEPTNO = d.DEPTNO
 where e.job = 'allen';
 */
 
-
 select empno, ename, hiredate, sal
-from emp  e
-join dept d
-on e.DEPTNO = d.DEPTNO
-where dname = (select dname from emp e join dept d on e.deptno = d.deptno where ename = 'jones');
+from emp
+where deptno = (select deptno from emp where ename = 'jones');
 
 select empno, ename, dname, hiredate, loc, sal
-from emp  e
-join dept d
-on e.deptno = d.deptno
-where sal > (select avg(sal) from emp);
+from emp  e, dept d
+where sal > (select avg(sal) from emp)
+      and e.deptno = d.deptno;
 
 select empno, ename, dname, loc, sal
-from emp  e
-join dept d
-on e.deptno = d.deptno
-where dname = (select dname from dept where deptno = 10)
-order by sal asc;
+from emp  e, dept d
+where job in(select job from emp where deptno = 10)
+      and e.deptno = d.deptno
+order by sal desc;
 
 select empno, ename, sal
 from emp
@@ -97,7 +88,110 @@ select empno, ename, sal
 from emp
 where sal > (select max(sal) from emp where deptno = 30);
 
+select max(sal+ifnull(comm,0)) max, min(sal+ifnull(comm,0)) min, avg(sal+ifnull(comm,0)) avg
+from emp;
+
+select sum(sal) sum
+from emp
+group by deptno;
+
+select ename 사원, job 직업, sal 급여,
+			(case 
+					when sal>=3000 then (sal+sal)* 0.15
+					when sal>=2000 then (sal+sal)* 0.1
+					when sal>=1000 then (sal+sal)* 0.05
+					else sal
+            end) as 격려금
+from emp;
+
+select ename, job, sal, dname, loc
+from emp e, dept d
+where e.deptno = d.deptno
+and e.mgr = (select mgr from emp where ename = 'martin');
+
+select e.ename, e.job, e.sal, d.dname
+from emp e, dept d
+where e.deptno = d.DEPTno
+      and d.dname = 'research';
+
+select d.dname, d.loc, e.sal
+from emp e, dept d
+where sal < (select min(avgsal) from (select avg(sal) avgsal from emp group by deptno) as avgmin)
+	and e.deptno = d.deptno;
+
+select e.ename, e.hiredate
+from emp e
+where ename != 'blake'
+      and deptno = (select deptno from emp where ename = 'blake');
+      
+select e.empno, e.ename
+from emp e
+where e.deptno in(select deptno from emp where ename like '%T%');
+      
+select e.empno, e.ename, e.sal
+from emp e
+where e.deptno in(select deptno from emp where sal > (select avg(sal) from emp) and ename like '%S%');   
+
+select ename, sal, deptno
+from emp
+where deptno in(
+				select deptno
+				from emp
+				where comm is not null
+				and comm > 0)
+and sal in(	
+			select sal
+			from emp
+			where comm is not null
+			and comm > 0);
+
+select e.job, (
+		case 
+			when job = 'president'	then 'A'
+			when job = 'analyst'	then 'B'
+            when job = 'manager'	then 'C'
+            when job = 'salesman' 	then 'D'
+            when job = 'clerk'		then 'E'
+		end
+        ) as 등급
+from emp e;
+
+select e.empno, e.ename, d.dname, e.hiredate, d.loc , job
+from emp e, dept d
+where e.deptno = d.deptno
+and e.deptno = 10
+and e.job not in( select job from emp where deptno = 30);
+
+select empno, ename, sal
+from emp
+where sal > (select max(sal) from emp where deptno = 30);
+
+select empno, ename, sal
+from emp
+where sal < (select min(sal) from emp where deptno = 30);
+
+select e.empno, e.ename, e.hiredate, d.dname
+from emp e, dept d
+where e.deptno = d.deptno
+and hiredate = (select min(hiredate) from emp);
+
+select empno, ename, sal*12+ifnull(comm,0) 연봉
+from emp
+where sal*12+ifnull(comm,0) > (select avg(sal*12+ifnull(comm,0)) from emp)
+order by 연봉 desc;
+
+select d.deptno, d.dname, e.ename, e.sal
+from emp e, dept d
+where e.DEPTNO = d.deptno;
+
+select d.dname
+from emp e, dept d
+where e.deptno = d.deptno
+and e.ename = 'allen';
 
 
-
-
+select d.deptno
+from emp e
+right outer join dept d
+on e.deptno = d.deptno
+where e.deptno is null;
