@@ -34,6 +34,12 @@ from emp  e, dept d
 where job = (select job from emp where ename = 'ALLEN')
       and e.DEPTNO = d.DEPTNO;
 
+select e.ename, d.dname, e.sal, e.job
+from emp e, dept d, emp e1
+where e.job = e1.job
+	and e1.ename = 'allen'
+	and e.deptno = d.deptno;
+
 /*
 select ename, dname, sal, job
 from emp  e
@@ -58,17 +64,19 @@ select ename, dname, sal, job
 from emp  e, dept d
 where e.DEPTNO = d.DEPTNO;
 
-select ename, dname, sal, job
-from emp  e
-join dept d
-on e.DEPTNO = d.DEPTNO
-where e.job = 'allen';
+
 */
 
 select empno, ename, hiredate, sal
 from emp
 where deptno = (select deptno from emp where ename = 'jones');
 
+select e.empno, e.ename, e.hiredate, e.sal
+from emp e, emp e1
+where e.deptno = e1.deptno
+    and e1.ename = 'jones';
+    
+    
 select empno, ename, dname, hiredate, loc, sal
 from emp  e, dept d
 where sal > (select avg(sal) from emp)
@@ -78,6 +86,13 @@ select empno, ename, dname, loc, sal
 from emp  e, dept d
 where job in(select job from emp where deptno = 10)
       and e.deptno = d.deptno
+order by sal desc;
+
+select e.empno, e.ename, d.dname, d.loc, e.sal
+from emp  e, dept d,emp e1
+where e1.deptno = 10
+	and e.job = e1.job
+	and e.deptno = d.deptno
 order by sal desc;
 
 select empno, ename, sal
@@ -145,6 +160,14 @@ and sal in(
 			where comm is not null
 			and comm > 0);
 
+select distinct e.ename, e.sal, e.deptno
+from emp e, emp e1
+where  e.deptno = e1.deptno 
+and e1.comm is not null 
+and e1.comm > 0
+and e.sal = e1.sal;
+
+
 select e.job, (
 		case 
 			when job = 'president'	then 'A'
@@ -156,11 +179,27 @@ select e.job, (
         ) as 등급
 from emp e;
 
-select e.empno, e.ename, d.dname, e.hiredate, d.loc , job
+use exam;
+
+select e.empno, e.ename, d.dname, e.hiredate, d.loc ,e.job
 from emp e, dept d
 where e.deptno = d.deptno
 and e.deptno = 10
-and e.job not in( select job from emp where deptno = 30);
+and e.job not in(select job from emp where deptno = 30);
+
+select e.empno, e.ename, d.dname, e.hiredate, d.loc ,e.job,e.deptno
+  from emp e, dept d, emp e1
+where e.deptno = d.deptno
+    and e.deptno = 10
+    and e.job=e1.job
+    and e1.deptno<>30;
+
+select distinct e.empno, e.ename, d.dname, e.hiredate, d.loc ,e.job,e.deptno
+from emp e, dept d, emp e1
+where e.deptno = d.deptno
+and e.deptno = 10
+and e.job <> e1.job
+and e1.deptno = 30;
 
 select empno, ename, sal
 from emp
@@ -195,3 +234,13 @@ from emp e
 right outer join dept d
 on e.deptno = d.deptno
 where e.deptno is null;
+
+
+select empno, sum_s '부서별 월급합'
+from (
+		select empno, sum(sal) as sum_s
+        from emp
+        group by deptno
+	) as s;
+
+
