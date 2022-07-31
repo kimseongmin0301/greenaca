@@ -3,7 +3,13 @@
 /java/.idea
 /java/out
 
-*.iml
-*.xml
+SQL.iml
+html.iml
+java.iml
+html.iml
+SQL.xml
+html.xml
+java.xml
+html.xml
 *.class
 /java/Seongmin.iml
