@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 
 @Service
-public class BoardServiceImpl implements BoardService, BoardMapper{
+public class BoardServiceImpl implements BoardService{
     @Autowired
     BoardMapper boardMapper;
 
