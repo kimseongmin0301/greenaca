@@ -11,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 
 @Controller
 public class CustomerController {
@@ -61,5 +60,24 @@ public class CustomerController {
     public String joinPost(CustomerVO customerVO) {
         customerService.join(customerVO);
         return "redirect:/";
+    }
+
+    // 회원정보
+    @RequestMapping(value = "/cmDetail", method = RequestMethod.GET)
+    public String cmDetail(Model model, HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        session.getAttribute("customer");
+        model.addAttribute("lg", session.getAttribute("customer"));
+
+        return "/Main/CustomerDetail";
+    }
+
+    // 회원정보수정
+    @RequestMapping(value = "/Modify", method = RequestMethod.POST)
+    public String cmModify(CustomerVO customerVO,RedirectAttributes rttr) {
+        customerService.cmModify(customerVO);
+        rttr.addAttribute("id",customerVO.getId());
+
+        return "forward:/";
     }
 }

@@ -22,7 +22,7 @@
     <a href="/join"><input type="button" value="회원가입"></a>
     </c:if>
     <c:if test="${customer != null}">
-        teddy
+        <a href="/cmDetail">회원정보수정</a>
         <a href="/logout">로그아웃</a>
     </c:if>
     <c:if test="${msg == false}">

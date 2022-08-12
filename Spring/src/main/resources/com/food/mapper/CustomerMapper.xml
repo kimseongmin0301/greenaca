@@ -13,4 +13,14 @@
     <select id="login" resultType="com.food.model.CustomerVO">
         select id, pw from customer where id = #{id} and pw = #{pw}
     </select>
+
+    <select id="cmDetail" resultType="com.food.model.CustomerVO">
+        select id, pw from customer where id = #{id} and pw = #{pw}
+    </select>
+
+    <update id="cmModify">
+        update customer
+        set pw = #{pw}
+        where id = #{id}
+    </update>
   </mapper>

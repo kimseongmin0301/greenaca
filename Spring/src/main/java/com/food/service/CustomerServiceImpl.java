@@ -17,8 +17,10 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public CustomerVO login(CustomerVO customerVO){
-
-
         return customerMapper.login(customerVO);
+    }
+
+    public void cmModify(CustomerVO customerVO){
+        customerMapper.cmModify(customerVO);
     }
 }

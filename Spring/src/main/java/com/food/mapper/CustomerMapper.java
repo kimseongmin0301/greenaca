@@ -9,4 +9,6 @@ public interface CustomerMapper {
     public CustomerVO login(CustomerVO customerVO);
 
     public void join(CustomerVO customerVO);
+
+    public void cmModify(CustomerVO customerVO);
 }
