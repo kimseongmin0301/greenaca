@@ -95,6 +95,9 @@
                     </div>
                 </div>
             </form>
+            <c:if test="${customer != null}">
+                <a href="/logout">로그아웃</a>
+            </c:if>
         </div>
     </div>
 </div>

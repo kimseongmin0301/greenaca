@@ -9,4 +9,8 @@
   <insert id="join">
       insert into customer(id, pw) values(#{id},#{pw})
   </insert>
+
+    <select id="login" resultType="com.food.model.CustomerVO">
+        select id, pw from customer where id = #{id} and pw = #{pw}
+    </select>
   </mapper>
