@@ -17,6 +17,7 @@
         </tr>
     </table>
     <input type="submit" value="수정">
+    <input type="submit" value="회원탈퇴" formaction="/withDraw">
 </form>
 </body>
 </html>

@@ -26,7 +26,7 @@
         <a href="/logout">로그아웃</a>
     </c:if>
     <c:if test="${msg == false}">
-        실패요
+        아이디나 비밀번호가 틀렸습니다.
     </c:if>
 </form>
 

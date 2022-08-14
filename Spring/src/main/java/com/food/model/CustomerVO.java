@@ -1,8 +1,8 @@
 package com.food.model;
 
 public class CustomerVO {
-    String id;
-    String pw;
+    private String id;
+    private String pw;
 
     @Override
     public String toString() {

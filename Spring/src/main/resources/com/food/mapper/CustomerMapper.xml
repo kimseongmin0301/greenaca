@@ -23,4 +23,12 @@
         set pw = #{pw}
         where id = #{id}
     </update>
+
+    <select id="idCheck" resultType="int" parameterType="com.food.model.CustomerVO">
+        select count(*) from customer where id = #{id}
+    </select>
+
+    <delete id="withDraw">
+        delete from customer where id = #{id}
+    </delete>
   </mapper>

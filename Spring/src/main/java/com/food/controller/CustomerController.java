@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpSession;
 public class CustomerController {
 
     @Autowired
-    CustomerService customerService;
+    private CustomerService customerService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String main() {
@@ -29,10 +30,10 @@ public class CustomerController {
     public String login(CustomerVO customerVO, HttpServletRequest request, RedirectAttributes rttr) {
         HttpSession session = request.getSession();
         CustomerVO login = customerService.login(customerVO);
-        if(login == null){
+        if (login == null) {
             session.setAttribute("customer", null);
             rttr.addFlashAttribute("msg", false);
-        }else{
+        } else {
             session.setAttribute("customer", login);
         }
 
@@ -41,7 +42,7 @@ public class CustomerController {
 
     // 로그아웃
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session) throws Exception{
+    public String logout(HttpSession session){
 
         session.invalidate();
 
@@ -55,11 +56,31 @@ public class CustomerController {
         return "/Main/CustomerJoin";
     }
 
+    @ResponseBody
+    @RequestMapping(value="/idCheck", method=RequestMethod.POST)
+    public int idCheck(String id) throws Exception{
+        int result = customerService.idCheck(id);
+
+        return result;
+    }
+
     // 회원가입
     @RequestMapping(value = "/join", method = RequestMethod.POST)
-    public String joinPost(CustomerVO customerVO) {
-        customerService.join(customerVO);
-        return "redirect:/";
+    public String joinPost(CustomerVO customerVO, String id) throws Exception {
+        int idResult = customerService.idCheck(id);
+
+        try {
+            if (idResult == 1) {
+                return "/Main/CustomerJoin";
+            } else if(idResult == 0){
+                customerService.join(customerVO);
+                return "redirect:/";
+            }
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+
+        return "/Main/CustomerJoin";
     }
 
     // 회원정보
@@ -74,10 +95,19 @@ public class CustomerController {
 
     // 회원정보수정
     @RequestMapping(value = "/Modify", method = RequestMethod.POST)
-    public String cmModify(CustomerVO customerVO,RedirectAttributes rttr) {
+    public String cmModify(CustomerVO customerVO, RedirectAttributes rttr) {
         customerService.cmModify(customerVO);
-        rttr.addAttribute("id",customerVO.getId());
+        rttr.addAttribute("id", customerVO.getId());
 
         return "forward:/";
+    }
+
+    // 회원탈퇴
+    @RequestMapping(value = "/withDraw", method = RequestMethod.POST)
+    public String withDraw(CustomerVO customerVO, HttpSession session) {
+        customerService.withDraw(customerVO);
+        session.invalidate();
+
+        return "redirect:/";
     }
 }
