@@ -21,15 +21,12 @@
 </form>
 <script>
     function id_check(){
-        var json = {"id" : $("#txtid").val()}
-
         $.ajax({
             url:"idCheck",
             type:"post",
             dataType : "json",
             data : $("#txtid").serialize(),
             cache:false,
-            async:true,
             success:function (data){
                 if(data == 1){
                     $("#idchk").text("중복입니다.");
