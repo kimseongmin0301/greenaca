@@ -95,9 +95,9 @@ public class CustomerController {
 
     // 회원정보수정
     @RequestMapping(value = "/Modify", method = RequestMethod.POST)
-    public String cmModify(CustomerVO customerVO, RedirectAttributes rttr) {
+    public String cmModify(CustomerVO customerVO) {
         customerService.cmModify(customerVO);
-        rttr.addAttribute("id", customerVO.getId());
+//        rttr.addAttribute("id", customerVO.getId());
 
         return "forward:/";
     }

@@ -9,8 +9,8 @@
     <tr>
         <td>아디</td>
         <td><input type="text" id="txtid" name="id">
-        <span id="idchk"></span></td>
         <td><button type="button" id="idCheck" onclick="id_check()" value="N">중복체크</button></td>
+        <td><span id="idchk"></span></td>
     </tr>
     <tr>
         <td>비번</td>
