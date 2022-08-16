@@ -1,6 +1,7 @@
 package com.food.mapper;
 
 import com.food.model.BoardVO;
+import com.food.model.CriteriaVO;
 import org.apache.ibatis.annotations.Mapper;
 import java.util.ArrayList;
 
@@ -10,7 +11,7 @@ public interface BoardMapper {
     public void write(BoardVO board);
 
     // 게시글 목록 리스트에 해당되는 DB작업 설계
-    public ArrayList<BoardVO> list();
+    public ArrayList<BoardVO> list(CriteriaVO criteriaVO);
 
     // 게시글 상세보기에 해당되는 DB작업 설계
     public BoardVO detail(BoardVO board);

@@ -1,10 +1,12 @@
 package com.food.controller;
 
 import com.food.model.BoardVO;
+import com.food.model.CriteriaVO;
 import com.food.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -18,10 +20,9 @@ public class BoardController {
     BoardService boardService;
 
     @RequestMapping(value = "/bread", method = RequestMethod.GET)
-    public String list(Model model) {
+    public String list(Model model, CriteriaVO criteriaVO) {
         // boardList.jsp 실행할 때 select된 결과를 가져가라.
-        ArrayList<BoardVO> list = boardService.list();
-        model.addAttribute("list",list);
+        model.addAttribute("list",boardService.list(criteriaVO));
 
         return "/Board/BoardList";
     }
@@ -39,6 +40,7 @@ public class BoardController {
 
     @RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
     public String detail(BoardVO board, Model model) {
+
         System.out.println(board);
         model.addAttribute("detail", boardService.detail(board));
         return "/Board/BoardDetail";

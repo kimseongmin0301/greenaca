@@ -77,6 +77,9 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <a href="/bread?pageNum=1">1</a>
+                        <a href="/bread?pageNum=2">2</a>
+                        <a href="/bread?pageNum=3">3</a>
                     </div>
                     <div id="list_btns">
                         <input type="submit" value="글쓰기" id="btn_write">
