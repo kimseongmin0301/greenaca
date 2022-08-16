@@ -24,6 +24,7 @@
     <c:if test="${customer != null}">
         <a href="/cmDetail">회원정보수정</a>
         <a href="/logout">로그아웃</a>
+        <a href="/bread">게시판이동</a>
     </c:if>
     <c:if test="${msg == false}">
         아이디나 비밀번호가 틀렸습니다.
