@@ -5,6 +5,9 @@ import com.food.model.BoardVO;
 import com.food.model.CriteriaVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.beans.Transient;
 import java.util.ArrayList;
 
 
@@ -25,15 +28,19 @@ public class BoardServiceImpl implements BoardService{
         return boardMapper.list(criteriaVO);
     }
 
+    @Transactional
     public BoardVO detail(BoardVO board){
+        boardMapper.cntup(board);
         return boardMapper.detail(board);
     }
-
     public void modify(BoardVO board){
         boardMapper.modify(board);
     }
 
     public void remove(BoardVO board){
         boardMapper.remove(board);
+    }
+    public int total(){
+       return boardMapper.total();
     }
 }

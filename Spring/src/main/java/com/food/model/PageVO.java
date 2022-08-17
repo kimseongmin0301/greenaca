@@ -26,7 +26,7 @@ public class PageVO {
         this.startPage = this.endPage - 9;
         // 제일 마지막 페이지 번호는 전체 건수를 고려해야함.
         // 제일 마지막 페이지 번호 식 : 전체건수(올림) / 페이지당 게시물 개수
-        int realEnd = (int)(Math.ceil(total * 1.0)/ criteriaVO.getAmount());
+        int realEnd = (int)(Math.ceil(total * 1.0/ criteriaVO.getAmount()));
 
         // realEnd 적용
         if(realEnd < this.endPage){

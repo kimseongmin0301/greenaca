@@ -16,9 +16,15 @@ public interface BoardMapper {
     // 게시글 상세보기에 해당되는 DB작업 설계
     public BoardVO detail(BoardVO board);
 
+    // 조회수 업데이트
+    void cntup(BoardVO board);
+
     // 게시글 수정에 해당되는 DB작업 설계
     public void modify(BoardVO board);
 
     // 게시글 삭제에 해당되는 DB작업 설계
     public void remove(BoardVO board);
+
+    // 게시판 총 수
+    int total();
 }

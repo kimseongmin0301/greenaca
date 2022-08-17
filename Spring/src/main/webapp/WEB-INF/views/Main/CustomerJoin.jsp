@@ -26,6 +26,7 @@
             type:"post",
             dataType : "json",
             data : $("#txtid").serialize(),
+            // data : $("#txtid").val(),
             cache:false,
             success:function (data){
                 if(data == 1){
