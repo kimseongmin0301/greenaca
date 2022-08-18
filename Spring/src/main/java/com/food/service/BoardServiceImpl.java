@@ -39,7 +39,7 @@ public class BoardServiceImpl implements BoardService{
     public void remove(BoardVO board){
         boardMapper.remove(board);
     }
-    public int total(){
-       return boardMapper.total();
+    public int total(CriteriaVO criteriaVO){
+       return boardMapper.total(criteriaVO);
     }
 }

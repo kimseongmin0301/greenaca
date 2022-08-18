@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/CSS/BoardList_CSS/boardList.css?3" type="text/css"/>
+          href="${pageContext.request.contextPath}/resources/CSS/BoardList_CSS/boardList.css?5" type="text/css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -46,7 +46,7 @@
                 <div>
                     <table class="tb_nav">
                         <tr>
-                            <td id="home"><a href="#"><span>🏠</span></a></td>
+                            <td id="home"><a href="/bread"><span>🏠</span></a></td>
                             <td id="best"><a href="#"><span>인기</span></a></td>
                             <td class="show_view"><a href="###">👍</a>
                                 <a href="###">👍</a>
@@ -55,64 +55,72 @@
                     </table>
                 </div>
             </div>
-            <form action="/boardWrite" method="get">
-                <div id="board_main">
-                    <div id="board_list">
-                        <table class="tb_nav list">
-                            <thead>
+
+            <div id="board_main">
+                <div id="board_list">
+                    <table class="tb_nav list">
+                        <thead>
+                        <tr>
+                            <th class="list_title">제목</th>
+                            <th class="list_user">글쓴이</th>
+                            <th class="list_cnt">조회수</th>
+                            <th class="list_date">날짜</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="board" items="${list}">
                             <tr>
-                                <th class="list_title">제목</th>
-                                <th class="list_user">글쓴이</th>
-                                <th class="list_cnt">조회수</th>
-                                <th class="list_date">날짜</th>
+                                <td class="list_title" id="lt"><a
+                                        href="/boardDetail?bno=${board.bno}">${board.title}</a></td>
+                                <td class="list_user">${board.bno}</td>
+                                <td class="list_cnt">${board.cnt}</td>
+                                <td class="list_date">${board.regdate}</td>
                             </tr>
-                            </thead>
-                            <tbody>
-                            <c:forEach var="board" items="${list}">
-                                <tr>
-                                    <td class="list_title" id="lt"><a
-                                            href="/boardDetail?bno=${board.bno}">${board.title}</a></td>
-                                    <td class="list_user">${board.bno}</td>
-                                    <td class="list_cnt">${board.cnt}</td>
-                                    <td class="list_date">${board.regdate}</td>
-                                </tr>
-                            </c:forEach>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="board_footer">
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+                <div id="board_footer">
+                    <form action="/bread" method="get" accept-charset="utf-8" id="searchForm">
                         <div id="search">
                             <div class="search_inside">
-                                <input type="text" size="10" id="abc">
-                                <input type="submit" value="🔍" id="search_btn" formaction="#">
-                                <select>
-                                    <option>닉네임</option>
-                                    <option>제목</option>
+                                <input type="text" size="10" id="search_bar" name="keyword">
+                                <input type="button" value="🔍" id="search_btn">
+                                <select name="type">
+                                    <option value="c">내용</option>
+                                    <option value="t">제목</option>
+                                    <option value="tc">제목+내용</option>
                                 </select>
+                                <input type="text" name="pageNum" value="${paging.criteriaVO.pageNum}" hidden>
+<%--                                <input type="text" name="amount" value="${paging.criteriaVO.amount}" hidden>--%>
                             </div>
                         </div>
+                    </form>
+                    <form action="/boardWrite" method="get">
                         <div id="list_btns">
                             <input type="submit" value="글쓰기" id="btn_write">
                         </div>
-                    </div>
-                    <div id="paging">
-                        <c:if test="${paging.prevBtn}">
-                            <a href="/bread?pageNum=${paging.startPage-1}&amount=${paging.criteriaVO.amount}">이전</a>
-                        </c:if>
-                        <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
-                            <a href="/bread?pageNum=${num}&amount=${paging.criteriaVO.amount}">${num}</a>
-                        </c:forEach>
-                        <c:if test="${paging.nextBtn}">
-                            <a href="/bread?pageNum=${paging.endPage+1}&amount=${paging.criteriaVO.amount}">다음</a>
-                        </c:if>
-                    </div>
+                    </form>
                 </div>
-            </form>
+                <div id="paging">
+                    <c:if test="${paging.prevBtn}">
+                        <a href="/bread?keyword=${paging.criteriaVO.keyword}&type=${paging.criteriaVO.type}&pageNum=${paging.startPage-1}&amount=${paging.criteriaVO.amount}">이전</a>
+                    </c:if>
+                    <c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="num">
+                        <a href="/bread?keyword=${paging.criteriaVO.keyword}&type=${paging.criteriaVO.type}&pageNum=${num}">${num}</a>
+                    </c:forEach>
+                    <c:if test="${paging.nextBtn}">
+                        <a href="/bread?keyword=${paging.criteriaVO.keyword}&type=${paging.criteriaVO.type}&pageNum=${paging.endPage+1}&amount=${paging.criteriaVO.amount}">다음</a>
+                    </c:if>
+                </div>
+            </div>
             <c:if test="${customer != null}">
                 <a href="/logout">로그아웃</a>
             </c:if>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/resources/JS/List.js"></script>
 </body>
 </html>

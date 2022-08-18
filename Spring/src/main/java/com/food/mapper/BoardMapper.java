@@ -26,5 +26,5 @@ public interface BoardMapper {
     public void remove(BoardVO board);
 
     // 게시판 총 수
-    int total();
+    int total(CriteriaVO criteriaVO);
 }

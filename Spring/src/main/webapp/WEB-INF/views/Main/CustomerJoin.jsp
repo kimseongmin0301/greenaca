@@ -17,9 +17,10 @@
         <td><input type="text" name="pw"></td>
     </tr>
 </table>
-    <input type="submit" value="가입">
+    <button type="submit" id="join_btn" disabled>가입</button>
 </form>
 <script>
+    document.getElementById( '#join_btn' ).setAttribute('disable');
     function id_check(){
         $.ajax({
             url:"idCheck",
@@ -29,10 +30,13 @@
             // data : $("#txtid").val(),
             cache:false,
             success:function (data){
+                const target = document.getElementById('join_btn');
                 if(data == 1){
                     $("#idchk").text("중복입니다.");
+                    target.disabled= true;
                 }else if(data == 0){
                     $("#idchk").text("허용됨");
+                    target.disabled = false;
                 }
             }
         })

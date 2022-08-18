@@ -22,7 +22,7 @@ public class BoardController {
         // boardList.jsp 실행할 때 select된 결과를 가져가라.
         model.addAttribute("list",boardService.list(criteriaVO));
         // boardList.jsp 실행할 때 PageVO에 저장되어 있는 데이터를 가져와라.
-        model.addAttribute("paging", new PageVO(criteriaVO, boardService.total()));
+        model.addAttribute("paging", new PageVO(criteriaVO, boardService.total(criteriaVO)));
         return "/Board/BoardList";
     }
 

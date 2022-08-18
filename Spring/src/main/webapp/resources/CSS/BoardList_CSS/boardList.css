@@ -188,9 +188,11 @@ table{
     height:44px;
     margin: 2px 0;
 }
+form{
+    width:100%;
+}
 #list_btns{
     margin : 20px 0;
-    width:1050px;
     height:30px;
     display : flex;
     justify-content: flex-end;
@@ -229,7 +231,7 @@ select, option{
     margin : 0 0 0 5px;
     font-size:1.0em;
 }
-#abc{
+#search_bar{
     height:23px;
     border: solid 1px #dddddd;
     border-right:0px;

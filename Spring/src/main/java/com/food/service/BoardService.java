@@ -21,5 +21,5 @@ public interface BoardService {
     // 글 삭제 설계
     public void remove(BoardVO board);
 
-    int total();
+    int total(CriteriaVO criteriaVO);
 }

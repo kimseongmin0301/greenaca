@@ -13,9 +13,23 @@
     <select id="list" resultType="com.food.model.BoardVO">
         select *
         from (
-                 select @rownum:=@rownum+1 rownum, b.* from board b, (select @rownum:=0) tmp
-                 order by bno desc
-             ) list
+        select @rownum:=@rownum+1 rownum, b.* from board b, (select @rownum:=0) tmp
+        <if test="keyword != null">
+            <choose>
+                <when test="type == 't'.toString()">
+                    where title like concat('%',#{keyword},'%')
+                </when>
+                <when test="type == 'c'.toString()">
+                    where content like concat('%',#{keyword},'%')
+                </when>
+                <otherwise>
+                    where title like concat('%',#{keyword},'%')
+                    or content like concat('%',#{keyword},'%')
+                </otherwise>
+            </choose>
+        </if>
+        order by bno desc
+        ) list
         <![CDATA[
         where rownum > (#{pageNum}-1)*#{amount} and rownum <= #{pageNum} * #{amount}
         ]]>
@@ -23,6 +37,9 @@
 
     <select id="total" resultType="int" parameterType="com.food.model.BoardVO">
         select count(*) from board
+        <if test="keyword != null">
+            where title like concat('%',#{keyword},'%')
+        </if>
     </select>
 
     <select id="detail" resultType="com.food.model.BoardVO">
