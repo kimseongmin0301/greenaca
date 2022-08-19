@@ -39,7 +39,7 @@ public class BoardController {
 
     @RequestMapping(value = "/boardDetail", method = RequestMethod.GET)
     public String detail(BoardVO board, Model model) {
-        System.out.println(board);
+//        System.out.println(board);
         model.addAttribute("detail", boardService.detail(board));
         return "/Board/BoardDetail";
     }
