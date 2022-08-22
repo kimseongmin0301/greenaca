@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <%--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../../../resources/JS/reply.js"></script>
 </head>
 <body>
 <div id="container">
@@ -37,22 +40,17 @@
                 <label>댓글</label>
             </div>
 
-            <textarea style="resize : none;" rows="5" cols="50" id="reply" name="area">
-
-            </textarea>
-
+            <textarea style="resize : none;" rows="5" cols="50" id="reply" name="area"></textarea>
             <%--            <input type="text" id="reply">--%>
         </div>
         <div>
             <input type="button" value="댓글쓰기" id="add">
         </div>
-        <div id="replyUL">
-
+        <div id="chat">
+            <div id="replyUL">
+            </div>
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="/resources/JS/reply.js"></script>
 </body>
 </html>

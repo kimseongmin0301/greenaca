@@ -7,21 +7,32 @@
 <mapper namespace="com.food.mapper.ReplyMapper">
     <insert id="replyWrite">
         insert into reply(reply, id, bno)
-        values(#{reply},#{id},#{bno})
+        values (#{reply}, #{id}, #{bno})
     </insert>
 
     <select id="list" resultType="com.food.model.ReplyVO">
-        select * from reply
+        select *
+        from reply
         where bno = #{bno}
         order by rno desc
     </select>
+    <update id="modify">
+        update reply
+        set reply = #{reply}
+        where rno = #{rno}
+    </update>
+    <delete id="remove">
+        delete
+        from reply
+        where rno = #{rno}
+    </delete>
 </mapper>
 
-<!--reply table-->
-<!--create table reply(
-rno				int				auto_increment		primary key,
-reply			varchar(300),
-id				varchar(10),
-replydate		datetime		default now(),
-bno				int
-);-->
+        <!--reply table-->
+        <!--create table reply(
+        rno				int				auto_increment		primary key,
+        reply			varchar(300),
+        id				varchar(10),
+        replydate		datetime		default now(),
+        bno				int
+        );-->

@@ -8,15 +8,23 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class ReplyServiceimpl implements ReplyService{
+public class ReplyServiceimpl implements ReplyService {
     @Autowired
     ReplyMapper replyMapper;
 
-    public int replyWrite(ReplyVO replyVO){
-       return replyMapper.replyWrite(replyVO);
+    public int replyWrite(ReplyVO replyVO) {
+        return replyMapper.replyWrite(replyVO);
     }
 
-    public ArrayList<ReplyVO> list(int bno){
+    public ArrayList<ReplyVO> list(int bno) {
         return replyMapper.list(bno);
+    }
+
+    public int modify(ReplyVO replyVO) {
+        return replyMapper.modify(replyVO);
+    }
+
+    public void remove(ReplyVO replyVO) {
+        replyMapper.remove(replyVO);
     }
 }

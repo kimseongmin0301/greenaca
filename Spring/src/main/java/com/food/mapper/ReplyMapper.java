@@ -10,4 +10,8 @@ public interface ReplyMapper {
     public int replyWrite(ReplyVO replyVO);
 
     ArrayList<ReplyVO> list(int bno);
+
+    int modify(ReplyVO replyVO);
+
+    void remove(ReplyVO replyVO);
 }
