@@ -1,6 +1,9 @@
 package com.food.controller;
 
+import com.food.model.AttachFileVO;
 import net.coobird.thumbnailator.Thumbnailator;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,46 +14,49 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
 @Controller
 public class UploadController {
 
-    @RequestMapping(value="/upload", method = RequestMethod.GET)
-    public void uploadForm(){
+    @RequestMapping(value = "/upload", method = RequestMethod.GET)
+    public void uploadForm() {
 
     }
-    @RequestMapping(value="/uploadFormAction", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/uploadFormAction", method = RequestMethod.POST)
     public void uploadFromPost(MultipartFile[] multipartFile) throws IOException {
-        String uploadFolder="D:\\01-STUDY\\upload";
+        String uploadFolder = "D:\\01-STUDY\\upload";
 
         for (MultipartFile file : multipartFile) {
 //            System.out.println(file.getOriginalFilename());
 //            System.out.println(file.getSize());
 
-            File saveFile = new File(uploadFolder,file.getOriginalFilename());
+            File saveFile = new File(uploadFolder, file.getOriginalFilename());
 
             file.transferTo(saveFile);
         }
     }
 
-    @RequestMapping(value="/uploadajax", method = RequestMethod.GET)
-    public void uploadAjax(){
+    @RequestMapping(value = "/uploadajax", method = RequestMethod.GET)
+    public void uploadAjax() {
 
     }
+
     // 년 월 일 폴더 생성하는 메서드
-    private String getFolder(){
+    private String getFolder() {
         Date date = new Date();
 
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String str = simpleDateFormat.format(date);
 
-        return str.replace("-","\\");
+        return str.replace("-", "\\");
     }
 
     // 이미지 구분 메서드
-    private boolean checkImageType(File file)  {
+    private boolean checkImageType(File file) {
         try {
             String contentType = Files.probeContentType(file.toPath());
 //            System.out.println("contentType= " + contentType);
@@ -63,34 +69,54 @@ public class UploadController {
         return false;
     }
 
-    @RequestMapping(value="/uploadajaxAction", method = RequestMethod.POST)
-    public void uploadAjaxPost(MultipartFile[] multipartFile) throws IOException {
-        String uploadFolder="D:\\01-STUDY\\upload";
+    @RequestMapping(value = "/uploadajaxAction", method = RequestMethod.POST)
+    public ResponseEntity<ArrayList<AttachFileVO>> uploadAjaxPost(MultipartFile[] multipartFile) throws IOException {
 
-        File uploadPath = new File(uploadFolder,getFolder());
+        ArrayList<AttachFileVO> list = new ArrayList<>();
+
+        String uploadFolder = "D:\\01-STUDY\\upload";
+
+        // 경로 + 날짜
+        File uploadPath = new File(uploadFolder, getFolder());
         // 폴더 생성
-        if(uploadPath.exists() == false){
+        if (uploadPath.exists() == false) {
             uploadPath.mkdirs();
         }
 
         System.out.println(uploadPath);
         for (MultipartFile file : multipartFile) {
+            // AttachFileVO 클래스의 새로운 주소를 반복생성해 저장
+            AttachFileVO attachFileVO = new AttachFileVO();
+
 //            System.out.println(file.getOriginalFilename());
 //            System.out.println(file.getSize());
 
             UUID uuid = UUID.randomUUID();
 //            System.out.println("UUID=" + uuid.toString());
 
-            File saveFile = new File(uploadPath,uuid.toString()+"_"+file.getOriginalFilename());
+            // AttachFileVo의 uploadPath 변수에 저장
+            attachFileVO.setUploadPath(getFolder());
+            // AttachFileVo의 fileName 변수에 저장
+            attachFileVO.setFileName(file.getOriginalFilename());
+            // AttachFileVo의 uuid 변수에 저장
+            attachFileVO.setUuid(uuid.toString());
+
+            File saveFile = new File(uploadPath, uuid.toString() + "_" + file.getOriginalFilename());
             file.transferTo(saveFile);
 
-            if(checkImageType(saveFile)){
-                FileOutputStream thumnail = new FileOutputStream(new File(uploadPath,"s_"+uuid.toString()+"_"+file.getOriginalFilename()));
-                Thumbnailator.createThumbnail(file.getInputStream(),thumnail,100,100);
+            if (checkImageType(saveFile)) {
+                // AttachFileVo의 image 변수에 저장
+                attachFileVO.setImage(true);
+
+                FileOutputStream thumnail = new FileOutputStream(new File(uploadPath, "s_" + uuid.toString() + "_" + file.getOriginalFilename()));
+                Thumbnailator.createThumbnail(file.getInputStream(), thumnail, 100, 100);
 
                 thumnail.close();
             }
+            // AttachFileVO를 배열에 저장
+            list.add(attachFileVO);
         }
-    }
 
+        return new ResponseEntity<>(list, HttpStatus.OK);
+    }
 }

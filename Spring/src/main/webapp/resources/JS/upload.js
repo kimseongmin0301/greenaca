@@ -37,7 +37,11 @@ $(document).ready(function () {
             url:"/uploadajaxAction",
             data:formData,
             processData:false,
-            contentType:false
+            contentType:false,
+            dataType:"json",
+            success:function (data){
+                console.log(data);
+            }
         })
 
     })
