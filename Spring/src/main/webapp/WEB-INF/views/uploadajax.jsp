@@ -10,5 +10,10 @@
     <input type="file" name="multipartFile" multiple id="upload">
     <input type="button" value="파일전송" id="uploadBtn">
 </div>
+<div>
+    <ul id="upload_img">
+
+    </ul>
+</div>
 </body>
 </html>
