@@ -143,11 +143,11 @@ public class UploadController {
         return result;
     }
 
-    // 다운로드 주소 생성
+        // 다운로드 주소 생성
     @RequestMapping(value = "/download", method = RequestMethod.GET)
     public ResponseEntity<Resource> downloadFile(String fileName) {
 
-        Resource resource = new FileSystemResource("D:\\upload\\" + fileName);
+        Resource resource = new FileSystemResource("D:\\01-STUDY\\upload\\" + fileName);
 
         // 다운로드 시 파일의 이름 처리
         String resourceFilename = resource.getFilename();
