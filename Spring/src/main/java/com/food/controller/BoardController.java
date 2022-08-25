@@ -1,5 +1,6 @@
 package com.food.controller;
 
+import com.food.model.AttachFileVO;
 import com.food.model.BoardVO;
 import com.food.model.CriteriaVO;
 import com.food.model.PageVO;
@@ -31,7 +32,7 @@ public class BoardController {
         return "/Board/BoardWrite";
     }
     @RequestMapping(value = "/boardWrite", method = RequestMethod.POST)
-    public String boardWritePost(BoardVO board) {
+    public String boardWritePost(BoardVO board, AttachFileVO attachFileVO) {
         //비지니스 영역 연결한 후 BoardService에 있는 write 메소드를 호출
         boardService.write(board);
         return "redirect:/bread";

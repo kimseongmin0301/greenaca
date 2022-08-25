@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="resources/CSS/BoardList_CSS/BoardWrite.css" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="resources/JS/upload.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="wrap">
@@ -29,12 +31,21 @@
                                       maxlength="2048" name="content"></textarea></td>
                     </tr>
                     <tr>
-                        <td id="b_file"><input type="file" name="fileName"></td>
+                        <td id="b_file">    <input type="file" name="multipartFile" multiple id="upload">
+                            <input type="text" name="fileName" id="fileName">
+                            <input type="text" name="uuid" id="uuid">
+                            <input type="text" name="uploadpath" id="uploadpath">
+                            <input type="text" name="image" id="image">
+                        </td>
                     </tr>
                     </tbody>
                 </table>
+                <div>
+                    <ul id="upload_img">
+                    </ul>
+                </div>
                 <div id="abc">
-                    <button type="submit" class="btn_write">글쓰기</button>
+                    <button type="submit" class="btn_write" id="uploadBtn">글쓰기</button>
                     <a href="http://localhost:8080/bread"><button type="button" class="btn_write btn_cancel">취소</button></a>
                 </div>
             </form>

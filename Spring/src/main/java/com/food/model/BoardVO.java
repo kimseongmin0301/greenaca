@@ -1,13 +1,45 @@
 package com.food.model;
 
+import java.util.ArrayList;
+
 public class BoardVO {
 
     private String title;
     private String content;
-
+    private String id;
     private int bno;
     private String regdate;
     private int cnt;
+    private ArrayList<AttachFileVO> attachFileVO;
+
+    @Override
+    public String toString() {
+        return "BoardVO{" +
+                "title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", id='" + id + '\'' +
+                ", bno=" + bno +
+                ", regdate='" + regdate + '\'' +
+                ", cnt=" + cnt +
+                ", attachFileVO=" + attachFileVO +
+                '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public ArrayList<AttachFileVO> getAttachFileVO() {
+        return attachFileVO;
+    }
+
+    public void setAttachFileVO(ArrayList<AttachFileVO> attachFileVO) {
+        this.attachFileVO = attachFileVO;
+    }
 
     public int getBno() {
         return bno;
@@ -49,14 +81,4 @@ public class BoardVO {
         this.content = content;
     }
 
-    @Override
-    public String toString() {
-        return "BoardVO{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", bno=" + bno +
-                ", regdate='" + regdate + '\'' +
-                ", cnt=" + cnt +
-                '}';
-    }
 }

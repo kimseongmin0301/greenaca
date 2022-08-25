@@ -9,6 +9,7 @@ public class AttachFileVO {
     private String uuid;
     // 업로드된 파일이 이미지 파일인지 판별
     private boolean image;
+    private int bno;
 
     public String getUploadPath() {
         return uploadPath;
@@ -42,6 +43,14 @@ public class AttachFileVO {
         this.image = image;
     }
 
+    public int getBno() {
+        return bno;
+    }
+
+    public void setBno(int bno) {
+        this.bno = bno;
+    }
+
     @Override
     public String toString() {
         return "AttachFileVO{" +
@@ -49,6 +58,7 @@ public class AttachFileVO {
                 ", fileName='" + fileName + '\'' +
                 ", uuid='" + uuid + '\'' +
                 ", image=" + image +
+                ", bno=" + bno +
                 '}';
     }
 }

@@ -18,7 +18,9 @@ $(document).ready(function () {
         return true;
     }
 
-    $("#uploadBtn").on("click", function () {
+    $("#uploadBtn").on("click", function (e) {
+        e.preventDefault();
+        alert("a")
         let formData = new FormData();
 
         let inputFile = $("#upload");
@@ -48,7 +50,7 @@ $(document).ready(function () {
                         str += "<li><img src='display?fileName=" + filePath + "'></li>"
                     } else {
                         let filePath = encodeURI(e.uploadPath + "/" + e.uuid + "_" + e.fileName);
-                        str += "<li><a href='download?fileName="+ filePath + "'>"+e.fileName+"</a></li>"
+                        str += "<li><a href='download?fileName=" + filePath + "'>" + e.fileName + "</a></li>"
                     }
                 })
                 $("#upload_img").html(str);
