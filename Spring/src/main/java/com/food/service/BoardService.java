@@ -1,5 +1,6 @@
 package com.food.service;
 
+import com.food.model.AttachFileVO;
 import com.food.model.BoardVO;
 import com.food.model.CriteriaVO;
 
@@ -22,4 +23,6 @@ public interface BoardService {
     public void remove(BoardVO board);
 
     int total(CriteriaVO criteriaVO);
+
+    ArrayList<AttachFileVO> attachlist(int bno);
 }

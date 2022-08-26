@@ -11,7 +11,7 @@
 <div id="wrap">
     <div id="container">
         <div id="content">
-            <form method="post" action="/boardWrite" accept-charset="UTF-8">
+            <form method="post" action="/boardWrite" accept-charset="UTF-8" id="form">
                 <table class="b">
                     <thead>
                     <tr>
@@ -32,10 +32,6 @@
                     </tr>
                     <tr>
                         <td id="b_file">    <input type="file" name="multipartFile" multiple id="upload">
-                            <input type="text" name="fileName" id="fileName">
-                            <input type="text" name="uuid" id="uuid">
-                            <input type="text" name="uploadpath" id="uploadpath">
-                            <input type="text" name="image" id="image">
                         </td>
                     </tr>
                     </tbody>
@@ -45,7 +41,7 @@
                     </ul>
                 </div>
                 <div id="abc">
-                    <button type="submit" class="btn_write" id="uploadBtn">글쓰기</button>
+                    <button type="button" class="btn_write" id="uploadBtn">글쓰기</button>
                     <a href="http://localhost:8080/bread"><button type="button" class="btn_write btn_cancel">취소</button></a>
                 </div>
             </form>

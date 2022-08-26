@@ -6,8 +6,12 @@
 
 <mapper namespace="com.food.mapper.BoardMapper">
     <insert id="write">
-        insert into board(title, content)
-        values(#{title},#{content})
+        <selectKey keyProperty="bno" order="BEFORE" resultType="int">
+            select max(bno)+1 bno from board
+        </selectKey>
+
+        insert into board(bno, title, content)
+        values(#{bno},#{title},#{content})
     </insert>
 
     <select id="list" resultType="com.food.model.BoardVO">

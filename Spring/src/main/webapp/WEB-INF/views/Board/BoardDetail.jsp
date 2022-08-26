@@ -7,6 +7,7 @@
     <%--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../../../resources/JS/reply.js"></script>
+    <script src="resources/JS/attach.js" type="text/javascript"></script>
 </head>
 <body>
 <div id="container">
@@ -18,7 +19,7 @@
                     <td><input type="text" class="form-control" name="title"
                                maxlength="50" style="width:443px;" value="${detail.title}">
                     </td>
-                    <td><input type="text" name="bno" value="${detail.bno}" hidden>
+                    <td><input type="text" name="bno" value="${detail.bno}" id="bno" hidden>
                     </td>
                 </tr>
                 </thead>
@@ -29,6 +30,12 @@
                 </tr>
                 </tbody>
             </table>
+            <div>
+                <ul id="upload_img">
+
+                </ul>
+            </div>
+
             <div class="board_btn">
                 <a href="/bread"><input type="button" value="목록"></a>
                 <input type="submit" value="수정"></a>

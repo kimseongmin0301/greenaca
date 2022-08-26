@@ -20,7 +20,6 @@ $(document).ready(function () {
 
     $("#uploadBtn").on("click", function (e) {
         e.preventDefault();
-        alert("a")
         let formData = new FormData();
 
         let inputFile = $("#upload");
@@ -43,8 +42,14 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data) {
                 console.log(data);
-                let str = ""
+                let str = "";
+                let input = "";
                 $(data).each(function (i, e) {
+                    input += "<input type = 'text' name = 'attachFileVO["+i+"].fileName' value = '" + e.fileName+ "'><br>";
+                    input += "<input type = 'text' name = 'attachFileVO["+i+"].uploadPath' value = '" + e.uploadPath+ "'><br>";
+                    input += "<input type = 'text' name = 'attachFileVO["+i+"].uuid' value = '" + e.uuid+ "'><br>";
+                    input += "<input type = 'text' name = 'attachFileVO["+i+"].image' value = '" + e.image+ "'><br><br>";
+
                     if (e.image) {
                         let filePath = encodeURI(e.uploadPath + "/s_" + e.uuid + "_" + e.fileName);
                         str += "<li><img src='display?fileName=" + filePath + "'></li>"
@@ -53,7 +58,8 @@ $(document).ready(function () {
                         str += "<li><a href='download?fileName=" + filePath + "'>" + e.fileName + "</a></li>"
                     }
                 })
-                $("#upload_img").html(str);
+                $("#upload_img").append(str);
+                $("#form").append(input).submit();
             }
         })
 

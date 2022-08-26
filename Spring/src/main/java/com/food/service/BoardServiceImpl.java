@@ -1,6 +1,8 @@
 package com.food.service;
 
+import com.food.mapper.BoardAttachMapper;
 import com.food.mapper.BoardMapper;
+import com.food.model.AttachFileVO;
 import com.food.model.BoardVO;
 import com.food.model.CriteriaVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,8 @@ import java.util.ArrayList;
 public class BoardServiceImpl implements BoardService{
     @Autowired
     BoardMapper boardMapper;
-
+    @Autowired
+    BoardAttachMapper boardAttachMapper;
     // BoardService에서 설계되어진 write 추상메서드를 구현
     public void write(BoardVO board) {
         // BoardMapper에 잇는 write메서드를 호출
@@ -22,6 +25,10 @@ public class BoardServiceImpl implements BoardService{
         // BoardMapper의 write메서드로 전달
 
         boardMapper.write(board);
+        board.getAttachFileVO().forEach(attachFileVO -> {
+            attachFileVO.setBno(board.getBno());
+            boardAttachMapper.insert(attachFileVO);
+        });
     }
     public ArrayList<BoardVO> list(CriteriaVO criteriaVO){
         return boardMapper.list(criteriaVO);
@@ -41,5 +48,10 @@ public class BoardServiceImpl implements BoardService{
     }
     public int total(CriteriaVO criteriaVO){
        return boardMapper.total(criteriaVO);
+    }
+
+    //첨부파일 조회 구현
+    public ArrayList<AttachFileVO> attachlist(int bno){
+        return boardAttachMapper.attachlist(bno);
     }
 }

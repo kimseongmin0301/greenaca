@@ -61,6 +61,7 @@
                     <table class="tb_nav list">
                         <thead>
                         <tr>
+                            <th class="list_cnt">글번호</th>
                             <th class="list_title">제목</th>
                             <th class="list_user">글쓴이</th>
                             <th class="list_cnt">조회수</th>
@@ -70,9 +71,10 @@
                         <tbody>
                         <c:forEach var="board" items="${list}">
                             <tr>
+                                <td class="list_cnt">${board.bno}</td>
                                 <td class="list_title" id="lt"><a
                                         href="/boardDetail?bno=${board.bno}">${board.title}</a></td>
-                                <td class="list_user">${board.bno}</td>
+                                <td class="list_user"></td>
                                 <td class="list_cnt">${board.cnt}</td>
                                 <td class="list_date">${board.regdate}</td>
                             </tr>
