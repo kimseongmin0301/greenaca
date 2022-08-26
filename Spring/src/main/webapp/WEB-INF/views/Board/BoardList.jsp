@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/resources/CSS/BoardList_CSS/boardList.css?5" type="text/css"/>
+          href="${pageContext.request.contextPath}/resources/CSS/BoardList_CSS/boardList.css?14" type="text/css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -115,6 +115,7 @@
                         <a href="/bread?keyword=${paging.criteriaVO.keyword}&type=${paging.criteriaVO.type}&pageNum=${paging.endPage+1}&amount=${paging.criteriaVO.amount}">다음</a>
                     </c:if>
                 </div>
+                <img src="/api/img/" />
             </div>
             <c:if test="${customer != null}">
                 <a href="/logout">로그아웃</a>

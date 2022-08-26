@@ -14,6 +14,8 @@
         values(#{bno},#{title},#{content})
     </insert>
 
+    <!--  id도 list 이러지말고 Borad테이블이면 getBoardList 이런씩으로   -->
+    <!--  select 변수명 get, insert(reg), update(mod), ...  -->
     <select id="list" resultType="com.food.model.BoardVO">
         select *
         from (
