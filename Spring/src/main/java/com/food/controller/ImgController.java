@@ -19,7 +19,7 @@ public class ImgController {
 
     @GetMapping("/")
     public void getImage(HttpServletResponse response){
-        String imgName = "D:\\01-STUDY\\upload\\apple.png";
+        String imgName = "C:\\img";
         try {
             response.setContentType("image/png");
             if(imgName != null && Files.exists(Paths.get(imgName))){

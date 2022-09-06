@@ -32,7 +32,7 @@ public class UploadController {
 
     @RequestMapping(value = "/uploadFormAction", method = RequestMethod.POST)
     public void uploadFromPost(MultipartFile[] multipartFile) throws IOException {
-        String uploadFolder = "D:\\01-STUDY\\upload";
+        String uploadFolder = "C:\\img";
 
         for (MultipartFile file : multipartFile) {
 //            System.out.println(file.getOriginalFilename());
@@ -78,7 +78,7 @@ public class UploadController {
 
         ArrayList<AttachFileVO> list = new ArrayList<>();
 
-        String uploadFolder = "D:\\01-STUDY\\upload";
+        String uploadFolder = "C:\\img";
 
         // 경로 + 날짜
         File uploadPath = new File(uploadFolder, getFolder());
@@ -128,7 +128,7 @@ public class UploadController {
     @RequestMapping(value = "/display", method = RequestMethod.GET)
     public ResponseEntity<byte[]> getFile(String fileName) {
 //        System.out.println(fileName);
-        File file = new File("D:\\01-STUDY\\upload\\" + fileName);
+        File file = new File("C:\\img" + fileName);
 
         ResponseEntity<byte[]> result = null;
 

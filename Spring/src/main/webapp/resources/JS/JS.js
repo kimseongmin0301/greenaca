@@ -1,7 +1,7 @@
 function id_check(){
     $.ajax({
         url:"/join",
-        tpe:"POST",
+        type:"POST",
         dataType:"JSON",
         data:{"id" : $("#id").val()},
         success:function (data){
